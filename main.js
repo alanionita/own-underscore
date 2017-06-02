@@ -15,8 +15,14 @@ _.identity = function (args) {
 };
 
 _.first = function () {
-    if (Array.isArray(arguments[0])) {
-        return arguments[0][0];
+    if (arguments[1]) {
+        if (Array.isArray(arguments[0])) {
+           return arguments[0].slice(0, arguments[1]);
+        }
+    } else {
+        if (Array.isArray(arguments[0])) {
+            return arguments[0][0];
+        }
     }
 };
 

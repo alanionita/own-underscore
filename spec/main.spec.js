@@ -20,6 +20,7 @@ describe('_.identity', function () {
 
         expect(actual).to.equal(expected);
     });
+
     describe('_.identity works for all primitive types', function () {
         it('booleans', function () {
             let input = true;
@@ -56,6 +57,7 @@ describe('_.identity', function () {
             expect(actual).to.undefined;
         });
     });
+
     describe('_.identity works for all objects', function () {
         it('objects', function () {
             let input = {
@@ -104,5 +106,12 @@ describe('_.first', function () {
         let actual = _.first(input);
         let expected = 'a';
         expect(actual).to.equal(expected);
+    });
+    it('if passed a second argument [n], returns an array of the first [n] x elements', function () {
+        let arg1 = ['a', 'r', 'r', 'a', 'y'];
+        let arg2 = 2;
+        let actual = _.first(arg1, arg2);
+        let expected = ['a', 'r'];
+        expect(actual).to.eql(expected);
     });
 });
