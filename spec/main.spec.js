@@ -131,4 +131,10 @@ describe('_.last', function () {
         let actual = _.last(input);
         expect(actual).to.be.undefined;
     });
+    it('returns the last element of an array', function () {
+        let input = ['a', 'r', 'r', 'a', 'y'];
+        let actual = _.last(input);
+        let expected = 'y';
+        expect(actual).to.equal(expected);
     });
+});

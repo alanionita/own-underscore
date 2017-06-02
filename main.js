@@ -16,7 +16,7 @@ _.identity = function (args) {
 _.first = function () {
     if (arguments[1]) {
         if (Array.isArray(arguments[0])) {
-           return arguments[0].slice(0, arguments[1]);
+            return arguments[0].slice(0, arguments[1]);
         }
     } else {
         if (Array.isArray(arguments[0])) {
@@ -25,10 +25,10 @@ _.first = function () {
     }
 };
 
-_.last = function () {
-    if (Array.isArray(arguments[arguments.length])) {
-            return arguments[arguments.length];
-        }
+_.last = function (...theArgs) {
+    if (Array.isArray(theArgs[0])) {
+        return theArgs[0].pop();
+    }
 };
 
 if (typeof module !== 'undefined') {
