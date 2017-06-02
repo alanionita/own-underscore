@@ -137,4 +137,11 @@ describe('_.last', function () {
         let expected = 'y';
         expect(actual).to.equal(expected);
     });
+    it('if passed a second argument [n], returns an array of the last [n] x elements', function () {
+        let arg1 = ['a', 'r', 'r', 'a', 'y'];
+        let arg2 = 2;
+        let actual = _.last(arg1, arg2);
+        let expected = ['a', 'y'];
+        expect(actual).to.eql(expected);
+    });
 });

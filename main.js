@@ -26,8 +26,14 @@ _.first = function () {
 };
 
 _.last = function (...theArgs) {
-    if (Array.isArray(theArgs[0])) {
-        return theArgs[0].pop();
+    if (theArgs[1]) {
+        if (Array.isArray(theArgs[0])) {
+            return theArgs[0].slice(-theArgs[1]);
+        }
+    } else {
+        if (Array.isArray(theArgs[0])) {
+            return theArgs[0].pop();
+        }
     }
 };
 
