@@ -114,4 +114,11 @@ describe('_.first', function () {
         let expected = ['a', 'r'];
         expect(actual).to.eql(expected);
     });
+    it('if [n] is greater than the array length, return the whole array', function () {
+        let arg1 = ['a', 'r', 'r', 'a', 'y'];
+        let arg2 = Infinity;
+        let actual = _.first(arg1, arg2);
+        let expected = ['a', 'r', 'r', 'a', 'y'];
+        expect(actual).to.eql(expected);
+    });
 });
