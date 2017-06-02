@@ -98,4 +98,11 @@ describe('_.first', function () {
         let actual = _.first(input);
         expect(actual).to.be.undefined;
     });
+
+    it('returns the first element of an array', function () {
+        let input = ['a', 'r', 'r', 'a', 'y'];
+        let actual = _.first(input);
+        let expected = 'a';
+        expect(actual).to.equal(expected);
+    });
 });
