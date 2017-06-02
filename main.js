@@ -36,7 +36,12 @@ _.last = function (...theArgs) {
     }
 };
 
-_.each = function () {};
+_.each = function (list, iteratee) {
+    for (let i = 0; i < list.length; i++) {
+        iteratee(list[i]);
+    }
+    return list;
+};
 
 if (typeof module !== 'undefined') {
     module.exports = _;
