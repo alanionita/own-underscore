@@ -15,7 +15,9 @@ _.identity = function (args) {
 };
 
 _.first = function () {
-
+    if (Array.isArray(arguments[0])) {
+        return arguments[0][0];
+    }
 };
 
 if (typeof module !== 'undefined') {

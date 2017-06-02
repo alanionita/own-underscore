@@ -93,4 +93,9 @@ describe('_.first', function () {
         expect(_.first).to.exist;
         expect(_.first).to.be.a('function');
     });
+    it('only works with arrays', function () {
+        let input = 'string';
+        let actual = _.first(input);
+        expect(actual).to.be.undefined;
+    });
 });
