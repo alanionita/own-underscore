@@ -26,6 +26,9 @@ _.first = function () {
 };
 
 _.last = function () {
+    if (Array.isArray(arguments[arguments.length])) {
+            return arguments[arguments.length];
+        }
 };
 
 if (typeof module !== 'undefined') {

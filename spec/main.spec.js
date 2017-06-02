@@ -126,4 +126,9 @@ describe('_.last', function () {
         expect(_.last).to.exist;
         expect(_.last).to.be.a('function');
     });
+    it('only works with arrays', function () {
+        let input = 'string';
+        let actual = _.last(input);
+        expect(actual).to.be.undefined;
+    });
     });
