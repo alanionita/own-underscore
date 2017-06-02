@@ -162,12 +162,9 @@ describe('_.each', function () {
     });
     it('iterates over a list of elements, yielding each in turn to an iteratee function', function () {
         let list = ['a', 'r', 'r', 'a', 'y'];
-        let counter = 0;
-        function iteratee() {
-            return counter++;
-        }
-        _.each(list, iteratee);
-        expect(counter).to.equal(5);
+        let spy = sinon.spy();
+        _.each(list, spy);
+        expect(spy.callCount).to.equal(list.length);
     });
     describe('_.each should not work with primitive types passed as the list', function () {
         it('booleans return undefined', function () {
