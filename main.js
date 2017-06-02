@@ -52,7 +52,10 @@ _.each = function (...theArgs) {
 };
 
 _.indexOf = function (...theArgs) {
-    return theArgs;
+    let array = theArgs[0];
+    if (Array.isArray(array)){
+        return array;
+    }
 };
 
 if (typeof module !== 'undefined') {

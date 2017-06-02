@@ -227,4 +227,9 @@ describe('_.indexOf', function () {
         expect(_.indexOf).to.exist;
         expect(_.indexOf).to.be.a('function');
     });
+    it('only works with arrays passed as first param', function () {
+        let input = 'string';
+        let actual = _.indexOf(input);
+        expect(actual).to.be.undefined;
+    });
 });
