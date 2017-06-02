@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { spy } = require('sinon');
+// const { spy } = require('sinon');
 const _ = require('../main.js');
 
 describe('_ = own-underscore', function () {
