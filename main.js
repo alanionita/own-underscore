@@ -36,9 +36,18 @@ _.last = function (...theArgs) {
     }
 };
 
-_.each = function (list, iteratee) {
-    for (let i = 0; i < list.length; i++) {
-        iteratee(list[i]);
+_.each = function (...theArgs) {
+    let list = theArgs[0];
+    let iteratee = theArgs[1];
+
+    if (Array.isArray(list)) {
+        for (let i = 0; i < list.length; i++) {
+            iteratee(list[i]);
+        }
+    } else if (typeof list === 'object') {
+        for (let key in list) {
+            iteratee(list[key]);
+        } 
     }
     return list;
 };

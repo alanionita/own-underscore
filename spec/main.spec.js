@@ -163,11 +163,59 @@ describe('_.each', function () {
     it('iterates over a list of elements, yielding each in turn to an iteratee function', function () {
         let list = ['a', 'r', 'r', 'a', 'y'];
         let counter = 0;
-        function iteratee () {
+        function iteratee() {
             return counter++;
         }
         _.each(list, iteratee);
         expect(counter).to.equal(5);
+    });
+    describe('_.each should not work with primitive types passed as the list', function () {
+        it('booleans return undefined', function () {
+            let list = true;
+            let counter = 0;
+            function iteratee() {
+                return counter++;
+            }
+            _.each(list, iteratee);
+            expect(counter).to.equal(0);
+        });
+        it('numbers return undefined', function () {
+            let list = 1267672673;
+            let counter = 0;
+            function iteratee() {
+                return counter++;
+            }
+            _.each(list, iteratee);
+            expect(counter).to.equal(0);
+        });
+        it('strings return undefined', function () {
+            let list = 'string';
+            let counter = 0;
+            function iteratee() {
+                return counter++;
+            }
+            _.each(list, iteratee);
+            expect(counter).to.equal(0);
+        });
+        it('null returns undefined', function () {
+            let list = null;
+            let counter = 0;
+            function iteratee() {
+                return counter++;
+            }
+            _.each(list, iteratee);
+            expect(counter).to.equal(0);
+        });
+        it('undefined returns undefined', function () {
+            let list;
+            let counter = 0;
+            function iteratee() {
+                return counter++;
+            }
+            _.each(list, iteratee);
+            expect(counter).to.equal(0);
+        });
+
     });
 
 });
