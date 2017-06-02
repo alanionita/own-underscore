@@ -13,14 +13,14 @@ _.identity = function (args) {
     return args;
 };
 
-_.first = function () {
-    if (arguments[1]) {
-        if (Array.isArray(arguments[0])) {
-            return arguments[0].slice(0, arguments[1]);
+_.first = function (...theArgs) {
+    if (theArgs[1]) {
+        if (Array.isArray(theArgs[0])) {
+            return theArgs[0].slice(0, theArgs[1]);
         }
     } else {
-        if (Array.isArray(arguments[0])) {
-            return arguments[0][0];
+        if (Array.isArray(theArgs[0])) {
+            return theArgs[0][0];
         }
     }
 };
