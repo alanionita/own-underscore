@@ -1,0 +1,30 @@
+{
+  "name": "own-underscore",
+  "version": "1.0.0",
+  "description": "My own rendition of underscore, using the underscore.js functionality as a design pattern",
+  "main": "main.js",
+  "scripts": {
+    "test": "mocha ./spec/*.spec.js",
+    "testwatch": "mocha ./spec/*.spec.js --watch",
+    "lint": "eslint ./",
+    "posttest": "npm run lint",
+    "precommit": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alanionita/own-underscore.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alanionita/own-underscore/issues"
+  },
+  "homepage": "https://github.com/alanionita/own-underscore#readme",
+  "devDependencies": {
+    "chai": "^4.0.1",
+    "eslint": "^3.19.0",
+    "husky": "^0.13.4",
+    "mocha": "^3.4.2"
+  }
+}
