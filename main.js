@@ -1,6 +1,5 @@
 const _ = {};
 // Tasks
-// 2. first 
 // 3. last 
 // 4. each 
 // 5. indexOf 
@@ -24,6 +23,9 @@ _.first = function () {
             return arguments[0][0];
         }
     }
+};
+
+_.last = function () {
 };
 
 if (typeof module !== 'undefined') {

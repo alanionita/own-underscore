@@ -90,7 +90,6 @@ describe('_.identity', function () {
 });
 
 describe('_.first', function () {
-    // Returns the first element of an array. Passing n will return the first n elements of the array.
     it('should be a function', function () {
         expect(_.first).to.exist;
         expect(_.first).to.be.a('function');
@@ -122,3 +121,9 @@ describe('_.first', function () {
         expect(actual).to.eql(expected);
     });
 });
+describe('_.last', function () {
+    it('should be a function', function () {
+        expect(_.last).to.exist;
+        expect(_.last).to.be.a('function');
+    });
+    });
