@@ -232,4 +232,10 @@ describe('_.indexOf', function () {
         let actual = _.indexOf(input);
         expect(actual).to.be.undefined;
     });
+    it('returns the index of the value when found in the array', function () {
+        let array = [1,2,3];
+        let value = 2;
+        let actual = _.indexOf(array, value);
+        expect(actual).to.be.equal(1);
+    });
 });

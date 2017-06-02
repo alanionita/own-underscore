@@ -46,15 +46,20 @@ _.each = function (...theArgs) {
     } else if (typeof list === 'object') {
         for (let key in list) {
             iteratee(list[key], key, list);
-        } 
+        }
     }
     return list;
 };
 
 _.indexOf = function (...theArgs) {
     let array = theArgs[0];
-    if (Array.isArray(array)){
-        return array;
+    let value = theArgs[1];
+    if (Array.isArray(array)) {
+        for (let i = 0; i < array.length; i++) {
+            if (array[i] === value) {
+                return i;
+            }
+        }
     }
 };
 
