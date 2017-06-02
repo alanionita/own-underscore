@@ -11,6 +11,10 @@ const _ = {};
 // 9. map
 // 10. contains
 
+_.identity = function () {
+
+};
+
 if (typeof module !== 'undefined') {
-    module.exports = { _ };
+    module.exports = _;
 }
