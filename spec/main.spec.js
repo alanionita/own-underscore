@@ -152,3 +152,10 @@ describe('_.last', function () {
         expect(actual).to.eql(expected);
     });
 });
+
+describe('_.each', function () {
+    it('should be a function', function () {
+        expect(_.each).to.exist;
+        expect(_.each).to.be.a('function');
+    });
+});

@@ -1,6 +1,5 @@
 const _ = {};
 // Tasks
-// 3. last 
 // 4. each 
 // 5. indexOf 
 // 6. filter 
@@ -36,6 +35,8 @@ _.last = function (...theArgs) {
         }
     }
 };
+
+_.each = function () {};
 
 if (typeof module !== 'undefined') {
     module.exports = _;
