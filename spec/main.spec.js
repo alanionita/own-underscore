@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-// const { spy } = require('sinon');
+const sinon = require('sinon');
 const _ = require('../main.js');
 
 describe('_ = own-underscore', function () {
@@ -215,7 +215,12 @@ describe('_.each', function () {
             _.each(list, iteratee);
             expect(counter).to.equal(0);
         });
-
     });
-
+    it('should call the iteratee with three paramaters: element + index + list or value + key + list', function () {
+        let list = ['a'];
+        let spy = sinon.spy();
+        _.each(list, spy);
+        let argsPassedToIteratee = spy.args[0];
+        expect(argsPassedToIteratee.length).to.equal(3);
+    });
 });

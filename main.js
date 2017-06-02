@@ -42,11 +42,11 @@ _.each = function (...theArgs) {
 
     if (Array.isArray(list)) {
         for (let i = 0; i < list.length; i++) {
-            iteratee(list[i]);
+            iteratee(list[i], i, list);
         }
     } else if (typeof list === 'object') {
         for (let key in list) {
-            iteratee(list[key]);
+            iteratee(list[key], key, list);
         } 
     }
     return list;
