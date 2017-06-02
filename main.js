@@ -1,6 +1,5 @@
 const _ = {};
 // Tasks
-// 4. each 
 // 5. indexOf 
 // 6. filter 
 // 7. reject
@@ -50,6 +49,10 @@ _.each = function (...theArgs) {
         } 
     }
     return list;
+};
+
+_.indexOf = function (...theArgs) {
+    return theArgs;
 };
 
 if (typeof module !== 'undefined') {

@@ -221,3 +221,10 @@ describe('_.each', function () {
         expect(argsPassedToIteratee.length).to.equal(3);
     });
 });
+
+describe('_.indexOf', function () {
+    it('should be a function', function () {
+        expect(_.indexOf).to.exist;
+        expect(_.indexOf).to.be.a('function');
+    });
+});
