@@ -7,6 +7,7 @@ describe('_ = own-underscore', function () {
         expect(_).to.be.an('object');
     });
 });
+
 describe('_.identity', function () {
     it('should be a function', function () {
         expect(_.identity).to.exist;
@@ -83,5 +84,13 @@ describe('_.identity', function () {
 
             expect(actual).to.eql(expected);
         });
+    });
+});
+
+describe('_.first', function () {
+    // Returns the first element of an array. Passing n will return the first n elements of the array.
+    it('should be a function', function () {
+        expect(_.first).to.exist;
+        expect(_.first).to.be.a('function');
     });
 });

@@ -1,6 +1,5 @@
 const _ = {};
 // Tasks
-// 1. identity
 // 2. first 
 // 3. last 
 // 4. each 
@@ -13,6 +12,10 @@ const _ = {};
 
 _.identity = function (args) {
     return args;
+};
+
+_.first = function () {
+
 };
 
 if (typeof module !== 'undefined') {
