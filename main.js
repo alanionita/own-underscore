@@ -11,8 +11,8 @@ const _ = {};
 // 9. map
 // 10. contains
 
-_.identity = function () {
-
+_.identity = function (args) {
+    return args;
 };
 
 if (typeof module !== 'undefined') {

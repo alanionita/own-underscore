@@ -12,4 +12,11 @@ describe('_.identity', function () {
         expect(_.identity).to.exist;
         expect(_.identity).to.be.a('function');
     });
+    it('returns the same value passed as an argument', function () {
+        let input = 'string';
+        let actual = _.identity(input);
+        let expected = 'string';
+        
+        expect(actual).to.equal(expected);
+    });
 });
