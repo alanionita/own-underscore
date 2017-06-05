@@ -52,14 +52,19 @@ _.each = function (...theArgs) {
 };
 
 _.indexOf = function (...theArgs) {
-    let array = theArgs[0];
-    let value = theArgs[1];
-    if (Array.isArray(array)) {
-        for (let i = 0; i < array.length; i++) {
-            if (array[i] === value) {
-                return i;
+    const array = theArgs[0];
+    const target = theArgs[1];
+    if (Array.isArray(array) && (target)) {
+        // use each
+        let index;
+        _.each(array, function (elem, i) {
+            if (elem === target) {
+                index = i;
+            } else {
+                index = -1;
             }
-        }
+        });
+        return index;
     }
 };
 

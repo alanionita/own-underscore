@@ -234,8 +234,14 @@ describe('_.indexOf', function () {
     });
     it('returns the index of the value when found in the array', function () {
         let array = [1,2,3];
-        let value = 2;
+        let value = 3;
         let actual = _.indexOf(array, value);
-        expect(actual).to.be.equal(1);
+        expect(actual).to.be.equal(2);
+    });
+    it('returns -1 if the index is not found in the array', function () {
+        let array = [1,2,3];
+        let value = 7;
+        let actual = _.indexOf(array, value);
+        expect(actual).to.be.equal(-1);
     });
 });
