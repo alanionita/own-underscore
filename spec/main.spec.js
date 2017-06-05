@@ -233,15 +233,22 @@ describe('_.indexOf', function () {
         expect(actual).to.be.undefined;
     });
     it('returns the index of the value when found in the array', function () {
-        let array = [1,2,3];
+        let array = [1, 2, 3];
         let value = 3;
         let actual = _.indexOf(array, value);
         expect(actual).to.be.equal(2);
     });
     it('returns -1 if the index is not found in the array', function () {
-        let array = [1,2,3];
+        let array = [1, 2, 3];
         let value = 7;
         let actual = _.indexOf(array, value);
         expect(actual).to.be.equal(-1);
+    });
+});
+
+describe('_.filter', function () {
+    it('should be a function', function () {
+        expect(_.filter).to.exist;
+        expect(_.filter).to.be.a('function');
     });
 });

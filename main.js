@@ -1,6 +1,5 @@
 const _ = {};
 // Tasks
-// 5. indexOf 
 // 6. filter 
 // 7. reject
 // 8. uniq
@@ -67,6 +66,8 @@ _.indexOf = function (...theArgs) {
         return index;
     }
 };
+
+_.filter = function () {};
 
 if (typeof module !== 'undefined') {
     module.exports = _;
