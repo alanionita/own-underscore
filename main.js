@@ -69,11 +69,18 @@ _.indexOf = function (...theArgs) {
 
 _.filter = function (...theArgs) {
     const list = theArgs[0];
+    const predicate = theArgs[1];
 
     if (Array.isArray(list)) {
-        return list;
+        let result = [];
+        for (let i = 0; i < list.length; i++) {
+            if (predicate(list[i])) {
+                result.push(list[i]);
+            }
+        }
+        return result;
     } else if (typeof list === 'object') {
-        return list;
+        _.each(list, predicate);
     }
 };
 // Looks through each value in the list, returning an array of all the values that pass a truth test (predicate).
