@@ -67,7 +67,16 @@ _.indexOf = function (...theArgs) {
     }
 };
 
-_.filter = function () {};
+_.filter = function (...theArgs) {
+    const list = theArgs[0];
+
+    if (Array.isArray(list)) {
+        return list;
+    } else if (typeof list === 'object') {
+        return list;
+    }
+};
+// Looks through each value in the list, returning an array of all the values that pass a truth test (predicate).
 
 if (typeof module !== 'undefined') {
     module.exports = _;

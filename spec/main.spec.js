@@ -247,8 +247,17 @@ describe('_.indexOf', function () {
 });
 
 describe('_.filter', function () {
+    // Looks through each value in the list, returning an array of all the values that pass a truth test (predicate).
     it('should be a function', function () {
         expect(_.filter).to.exist;
         expect(_.filter).to.be.a('function');
+    });
+    it('only works with arrays and objects', function () {
+        let input1 = 'string';
+        let input2 = [1,2,3];
+        let actual1 = _.filter(input1);
+        let actual2 = _.filter(input2);
+        expect(actual1).to.be.undefined;
+        expect(actual2).to.not.be.undefined;     
     });
 });
