@@ -89,7 +89,6 @@ _.filter = function (...theArgs) {
         return result;
     }
 };
-// Looks through each value in the list, returning an array of all the values that pass a truth test (predicate).
 
 if (typeof module !== 'undefined') {
     module.exports = _;
