@@ -258,7 +258,7 @@ describe('_.filter', function () {
         let actual1 = _.filter(input1);
         let actual2 = _.filter(input2, function (num) { return num % 2 === 0; });
         expect(actual1).to.be.undefined;
-        expect(actual2).to.not.be.undefined;
+        expect(actual2).to.be.eql([2]);
     });
     it('returns an array of all the values that pass the truth test (predicate)', function () {
         let input = [1, 2, 3];
