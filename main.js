@@ -80,7 +80,13 @@ _.filter = function (...theArgs) {
         }
         return result;
     } else if (typeof list === 'object') {
-        _.each(list, predicate);
+        let result = [];
+        for (let key in list) {
+            if (predicate(list[key])) {
+                result.push(list[key]);
+            }
+        }
+        return result;
     }
 };
 // Looks through each value in the list, returning an array of all the values that pass a truth test (predicate).

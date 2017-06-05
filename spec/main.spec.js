@@ -260,8 +260,18 @@ describe('_.filter', function () {
         expect(actual1).to.be.undefined;
         expect(actual2).to.be.eql([2]);
     });
-    it('returns an array of all the values that pass the truth test (predicate)', function () {
+    it('when passed an array return an array of all the values that pass the truth test (predicate)', function () {
         let input = [1, 2, 3];
+        let predicate = function (num) { return num % 2 == 0; };
+        let actual = _.filter(input, predicate);
+        expect(actual).to.be.eql([2]);
+    });
+    it('when passed an object return an array of all the values that pass the truth test (predicate)', function () {
+        let input = {
+            x: 1, 
+            y: 2,
+            z: 3
+        };
         let predicate = function (num) { return num % 2 == 0; };
         let actual = _.filter(input, predicate);
         expect(actual).to.be.eql([2]);
