@@ -22,14 +22,14 @@ _.first = function (array, n) {
     }
 };
 
-_.last = function (...theArgs) {
-    if (theArgs[1]) {
-        if (Array.isArray(theArgs[0])) {
-            return theArgs[0].slice(-theArgs[1]);
+_.last = function (array, n) {
+    if (n) {
+        if (Array.isArray(array)) {
+            return array.slice(-n);
         }
     } else {
-        if (Array.isArray(theArgs[0])) {
-            return theArgs[0].pop();
+        if (Array.isArray(array)) {
+            return array.pop();
         }
     }
 };
