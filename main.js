@@ -10,14 +10,14 @@ _.identity = function (args) {
     return args;
 };
 
-_.first = function (...theArgs) {
-    if (theArgs[1]) {
-        if (Array.isArray(theArgs[0])) {
-            return theArgs[0].slice(0, theArgs[1]);
+_.first = function (array, n) {
+    if (n) {
+        if (Array.isArray(array)) {
+            return array.slice(0, n);
         }
     } else {
-        if (Array.isArray(theArgs[0])) {
-            return theArgs[0][0];
+        if (Array.isArray(array)) {
+            return array[0];
         }
     }
 };
