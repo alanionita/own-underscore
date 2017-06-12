@@ -177,16 +177,16 @@ describe('_.each', function () {
         const spy = sinon.spy();
 
         // declaring the paramaters for the _each function
-        
+
         const list = ['1', '2', '3'];
-        const context = { 
+        const context = {
             a: 4,
             b: 5,
             c: 6
         };
         _.each(list, spy, context);
         // checking spy properties
-        
+
         const callCount = spy.callCount;
         const firstCall = spy.firstCall.thisValue;
         const secondCall = spy.secondCall.thisValue;
@@ -195,7 +195,7 @@ describe('_.each', function () {
         expect(firstCall).to.be.eql(context);
         expect(secondCall).to.be.eql(context);
         expect(thirdCall).to.be.eql(context);
-    });    
+    });
     describe('_.each should not work with primitive types passed as the list', function () {
         it('booleans return undefined', function () {
             let list = true;
@@ -267,6 +267,30 @@ describe('_.indexOf', function () {
         let actual = _.indexOf(array, value);
         expect(actual).to.be.equal(-1);
     });
+    it('if isSorted is passed then use binary search', function () {
+        let array = [1, 2, 3, 4, 5, 6, 7];
+        let value = 4;
+        let actual = _.indexOf(array, value, true);
+        expect(actual).to.be.equal(3);
+    });
+    it('checks that binary search is faster than regular method', function () {
+        const array = [1, 2, 3, 4, 5, 6, 7, 8, 9 , 10, 11, 12, 13, 14, 15, 16, 18, 19, 20];
+        const value = 4;
+        
+        // binary times 
+        const binaryStart = process.hrtime();
+        _.indexOf(array, value, true);
+        const binaryStop = process.hrtime();
+        const binaryRuntime = binaryStop[1] - binaryStart[0];
+        
+        // regular times 
+        const regularStart = process.hrtime();
+        _.indexOf(array, value, false);
+        const regularStop = process.hrtime();
+        const regularRuntime = regularStop[1] - regularStart[0];
+
+        expect(regularRuntime).to.be.greaterThan(binaryRuntime);
+    });
 });
 
 describe('_.filter', function () {
@@ -291,7 +315,7 @@ describe('_.filter', function () {
     });
     it('when passed an object return an array of all the values that pass the truth test (predicate)', function () {
         let input = {
-            x: 1, 
+            x: 1,
             y: 2,
             z: 3
         };
