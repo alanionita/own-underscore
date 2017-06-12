@@ -166,6 +166,36 @@ describe('_.each', function () {
         _.each(list, spy);
         expect(spy.callCount).to.equal(list.length);
     });
+    it('should call the iteratee with three paramaters: element + index + list or value + key + list', function () {
+        let list = ['a'];
+        let spy = sinon.spy();
+        _.each(list, spy);
+        let argsPassedToIteratee = spy.args[0];
+        expect(argsPassedToIteratee.length).to.equal(3);
+    });
+    it('when context param is present, bind the iteratee to the context', function () {
+        const spy = sinon.spy();
+
+        // declaring the paramaters for the _each function
+        
+        const list = ['1', '2', '3'];
+        const context = { 
+            a: 4,
+            b: 5,
+            c: 6
+        };
+        _.each(list, spy, context);
+        // checking spy properties
+        
+        const callCount = spy.callCount;
+        const firstCall = spy.firstCall.thisValue;
+        const secondCall = spy.secondCall.thisValue;
+        const thirdCall = spy.thirdCall.thisValue;
+        expect(callCount).to.be.equal(3);
+        expect(firstCall).to.be.eql(context);
+        expect(secondCall).to.be.eql(context);
+        expect(thirdCall).to.be.eql(context);
+    });    
     describe('_.each should not work with primitive types passed as the list', function () {
         it('booleans return undefined', function () {
             let list = true;
@@ -212,13 +242,6 @@ describe('_.each', function () {
             _.each(list, iteratee);
             expect(counter).to.equal(0);
         });
-    });
-    it('should call the iteratee with three paramaters: element + index + list or value + key + list', function () {
-        let list = ['a'];
-        let spy = sinon.spy();
-        _.each(list, spy);
-        let argsPassedToIteratee = spy.args[0];
-        expect(argsPassedToIteratee.length).to.equal(3);
     });
 });
 

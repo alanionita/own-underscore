@@ -34,17 +34,26 @@ _.last = function (array, n) {
     }
 };
 
-_.each = function (...theArgs) {
-    let list = theArgs[0];
-    let iteratee = theArgs[1];
-
-    if (Array.isArray(list)) {
-        for (let i = 0; i < list.length; i++) {
-            iteratee(list[i], i, list);
+_.each = function (list, iteratee, context) {
+    if (!context) {
+        if (Array.isArray(list)) {
+            for (let i = 0; i < list.length; i++) {
+                iteratee(list[i], i, list);
+            }
+        } else if (typeof list === 'object') {
+            for (let key in list) {
+                iteratee(list[key], key, list);
+            }
         }
-    } else if (typeof list === 'object') {
-        for (let key in list) {
-            iteratee(list[key], key, list);
+    } else {
+        if (Array.isArray(list)) {
+            for (let i = 0; i < list.length; i++) {
+                iteratee.call(context, list[i], i, list);
+            }
+        } else if (typeof list === 'object') {
+            for (let key in list) {
+                iteratee.call(context, list[key], key, list);
+            }
         }
     }
     return list;
