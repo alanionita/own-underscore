@@ -1,6 +1,5 @@
 const _ = {};
 // Tasks
-// 6. filter 
 // 7. reject
 // 8. uniq
 // 9. map
@@ -59,20 +58,19 @@ _.each = function (list, iteratee, context) {
     return list;
 };
 
-_.indexOf = function (...theArgs) {
-    const array = theArgs[0];
-    const target = theArgs[1];
-    if (Array.isArray(array) && (target)) {
-        // use each
-        let index;
-        _.each(array, function (elem, i) {
-            if (elem === target) {
-                index = i;
-            } else {
-                index = -1;
-            }
-        });
-        return index;
+_.indexOf = function (array, target, isSorted) {
+    if (!isSorted) {
+        if (Array.isArray(array) && (target)) {
+            let index;
+            _.each(array, function (elem, i) {
+                if (elem === target) {
+                    index = i;
+                } else {
+                    index = -1;
+                }
+            });
+            return index;
+        }
     }
 };
 
