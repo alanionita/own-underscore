@@ -103,6 +103,8 @@ _.filter = function (list, predicate) {
     }
 };
 
+_.reject = function () {};
+
 if (typeof module !== 'undefined') {
     module.exports = _;
 }

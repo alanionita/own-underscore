@@ -2,7 +2,7 @@ const { expect } = require('chai');
 const sinon = require('sinon');
 const _ = require('../main.js');
 
-describe('_ = own-underscore', function () {
+describe('_.own-underscore', function () {
     'use strict';
     it('is an object', function () {
         expect(_).to.be.an('object');
@@ -274,15 +274,15 @@ describe('_.indexOf', function () {
         expect(actual).to.be.equal(3);
     });
     it('checks that binary search is faster than regular method', function () {
-        const array = [1, 2, 3, 4, 5, 6, 7, 8, 9 , 10, 11, 12, 13, 14, 15, 16, 18, 19, 20];
+        const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20];
         const value = 4;
-        
+
         // binary times 
         const binaryStart = process.hrtime();
         _.indexOf(array, value, true);
         const binaryStop = process.hrtime();
         const binaryRuntime = binaryStop[1] - binaryStart[0];
-        
+
         // regular times 
         const regularStart = process.hrtime();
         _.indexOf(array, value, false);
@@ -322,5 +322,11 @@ describe('_.filter', function () {
         let predicate = function (num) { return num % 2 == 0; };
         let actual = _.filter(input, predicate);
         expect(actual).to.be.eql([2]);
+    });
+});
+
+describe('_.reject', function () {
+    it('it should be a function',() => {
+        expect(_.reject).to.be.a('function');
     });
 });
