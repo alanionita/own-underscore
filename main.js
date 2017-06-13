@@ -104,10 +104,17 @@ _.filter = function (list, predicate) {
 };
 
 _.reject = function (list, predicate) {
-    if (Array.isArray(list) || typeof list === 'object') {
+    if (Array.isArray(list)) {
         _.each(list, (elem, i) => {
             if (predicate(elem)) {
                 list.splice(i, 1);
+            }
+        });
+        return list;
+    } else if (typeof list === 'object') {
+        _.each(list, (elem) => {
+            if (predicate(elem)) {
+                delete list[elem];
             }
         });
         return list;

@@ -341,4 +341,18 @@ describe('_.reject', function () {
         const expected = [1,3];
         expect(actual).to.eql(expected);
     });
+    it('works exactly the same with objects', () => {
+        const list = {
+            '1':1,
+            '2':2,
+            '3':3
+        };
+        const predicate = function (num) { return num % 2 === 0; };
+        const actual = _.reject(list, predicate);
+        const expected = {
+            '1':1,
+            '3':3
+        };
+        expect(actual).to.eql(expected);
+    });
 });
