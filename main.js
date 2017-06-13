@@ -102,21 +102,13 @@ _.indexOf = function (array, target, isSorted) {
 };
 
 _.filter = function (list, predicate) {
-    if (Array.isArray(list)) {
+    if (Array.isArray(list) || typeof list === 'object') {
         let result = [];
         _.each(list, function (elem) {
             if (predicate(elem)) {
                 result.push(elem);
             }
         });
-        return result;
-    } else if (typeof list === 'object') {
-        let result = [];
-        for (let key in list) {
-            if (predicate(list[key])) {
-                result.push(list[key]);
-            }
-        }
         return result;
     }
 };
