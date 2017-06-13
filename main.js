@@ -103,7 +103,16 @@ _.filter = function (list, predicate) {
     }
 };
 
-_.reject = function () {};
+_.reject = function (list, predicate) {
+    if (Array.isArray(list) || typeof list === 'object') {
+        _.each(list, (elem, i) => {
+            if (predicate(elem)) {
+                list.splice(i, 1);
+            }
+        });
+        return list;
+    }
+};
 
 if (typeof module !== 'undefined') {
     module.exports = _;

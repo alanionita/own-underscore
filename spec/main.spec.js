@@ -326,7 +326,19 @@ describe('_.filter', function () {
 });
 
 describe('_.reject', function () {
-    it('it should be a function',() => {
+    it('it should be a function', () => {
         expect(_.reject).to.be.a('function');
+    });
+    it('only works with arrays and objects', () => {
+        let input1 = 'string';
+        let actual1 = _.reject(input1);
+        expect(actual1).to.be.undefined;
+    });
+    it('return an array without the elemets that pass the predicate', () => {
+        const list = [1,2,3];
+        const predicate = function (num) { return num % 2 === 0; };
+        const actual = _.reject(list, predicate);
+        const expected = [1,3];
+        expect(actual).to.eql(expected);
     });
 });
