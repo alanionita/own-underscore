@@ -101,10 +101,7 @@ _.indexOf = function (array, target, isSorted) {
     }
 };
 
-_.filter = function (...theArgs) {
-    const list = theArgs[0];
-    const predicate = theArgs[1];
-
+_.filter = function (list, predicate) {
     if (Array.isArray(list)) {
         let result = [];
         for (let i = 0; i < list.length; i++) {
