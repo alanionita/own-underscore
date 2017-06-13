@@ -104,11 +104,11 @@ _.indexOf = function (array, target, isSorted) {
 _.filter = function (list, predicate) {
     if (Array.isArray(list)) {
         let result = [];
-        for (let i = 0; i < list.length; i++) {
-            if (predicate(list[i])) {
-                result.push(list[i]);
+        _.each(list, function (elem) {
+            if (predicate(elem)) {
+                result.push(elem);
             }
-        }
+        });
         return result;
     } else if (typeof list === 'object') {
         let result = [];
