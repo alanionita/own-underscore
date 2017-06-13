@@ -62,13 +62,13 @@ _.indexOf = function (array, target, isSorted) {
     if (!isSorted) {
         if (Array.isArray(array) && (target)) {
             let index;
-            _.each(array, function (elem, i) {
-                if (elem === target) {
+            for (let i = 0; i < array.length; i++) {
+                if (array[i] === target) {
                     index = i;
                 } else {
                     index = -1;
                 }
-            });
+            }
             return index;
         }
     } else {
