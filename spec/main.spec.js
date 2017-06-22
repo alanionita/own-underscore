@@ -397,14 +397,19 @@ describe('_.reject', function () {
     });
 });
 
-describe('_.uniq', function () {
+describe.only('_.uniq', function () {
     it('it should be a function', () => {
         expect(_.uniq).to.be.a('function');
     });
     it('only works with arrays', () => {
-        let input1 = 'string';
-        let actual1 = _.uniq(input1);
-        expect(actual1).to.be.undefined;
+        let input = 'string';
+        let actual = _.uniq(input);
+        expect(actual).to.be.undefined;
     });
-    
+    it('return a copy of the array using only the unique values', () => {
+        let input = [1,2,2,3];
+        let actual = _.uniq(input);
+        let expected = [1,2,3];
+        expect(actual).to.eql(expected);
+    });
 });
