@@ -401,4 +401,10 @@ describe('_.uniq', function () {
     it('it should be a function', () => {
         expect(_.uniq).to.be.a('function');
     });
+    it('only works with arrays', () => {
+        let input1 = 'string';
+        let actual1 = _.uniq(input1);
+        expect(actual1).to.be.undefined;
+    });
+    
 });

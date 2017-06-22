@@ -117,7 +117,11 @@ _.reject = function (list, predicate, context = null) {
     }
 };
 
-_.uniq = function () { };
+_.uniq = function (array) {
+    if (Array.isArray(array) === 'array'){
+        return array;
+    }
+};
 
 if (typeof module !== 'undefined') {
     module.exports = _;
