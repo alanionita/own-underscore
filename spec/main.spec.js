@@ -268,9 +268,9 @@ describe('_.indexOf', function () {
     });
     it('if isSorted is passed then use binary search', function () {
         let array = [1, 2, 3, 4, 5, 6, 7];
-        let value = 4;
+        let value = 7;
         let actual = _.indexOf(array, value, true);
-        expect(actual).to.be.equal(3);
+        expect(actual).to.be.equal(6);
     });
     it('checks that binary search is faster than regular method', function () {
         const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20];

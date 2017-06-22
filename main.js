@@ -65,30 +65,26 @@ _.indexOf = function (array, target, isSorted) {
     }
 
     function binaryIndexOf(array, searchElement) {
+        let start = 0;
+        let stop = array.length - 1;
+        let mid;
+        let element;
 
-        let minIndex = 0;
-        let maxIndex = array.length - 1;
-        let currentIndex;
-        let currentElement;
-
-        while (minIndex <= maxIndex) {
-            currentIndex = (minIndex + maxIndex) / 2 | 0;
-            currentElement = this[currentIndex];
-
-            if (currentElement < searchElement) {
-                minIndex = currentIndex + 1;
-            }
-            else if (currentElement > searchElement) {
-                maxIndex = currentIndex - 1;
-            }
-            else {
-                return currentIndex;
+        while (start <= stop) {
+            mid = Math.floor((start + stop) / 2, 10);
+            element = array[mid];
+            if (element < searchElement) {
+                start = mid + 1;
+            } else if (element > searchElement) {
+                stop = mid - 1;
+            } else {
+                return mid;
             }
         }
-
         return -1;
     }
 };
+
 
 _.filter = function (list, predicate, context = null) {
     if (Array.isArray(list) || typeof list === 'object') {
@@ -121,7 +117,7 @@ _.reject = function (list, predicate, context = null) {
     }
 };
 
-_.uniq = function () {};
+_.uniq = function () { };
 
 if (typeof module !== 'undefined') {
     module.exports = _;
