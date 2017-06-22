@@ -103,17 +103,17 @@ _.filter = function (list, predicate, context = null) {
     }
 };
 
-_.reject = function (list, predicate) {
+_.reject = function (list, predicate, context = null) {
     if (Array.isArray(list)) {
         _.each(list, (elem, i) => {
-            if (predicate(elem)) {
+            if (predicate.call(context, elem)) {
                 list.splice(i, 1);
             }
         });
         return list;
     } else if (typeof list === 'object') {
         _.each(list, (elem) => {
-            if (predicate(elem)) {
+            if (predicate.call(context, elem)) {
                 delete list[elem];
             }
         });

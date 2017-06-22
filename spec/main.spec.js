@@ -324,9 +324,7 @@ describe('_.filter', function () {
     });
     it('when context is passed the predicate is bound to it', () => {
         const spy = sinon.spy();
-
         // declaring the paramaters for the _each function
-
         const list = [1, 2, 3];
         const context = {
             a: 4,
@@ -375,5 +373,26 @@ describe('_.reject', function () {
             '3': 3
         };
         expect(actual).to.eql(expected);
+    });
+    it('when context is passed the predicate is bound to it', () => {
+        const spy = sinon.spy();
+        // declaring the paramaters for the _each function
+
+        const list = [1, 2, 3];
+        const context = {
+            a: 4,
+            b: 5,
+            c: 6
+        };
+        _.reject(list, spy, context);
+        // checking spy properties
+        const callCount = spy.callCount;
+        const firstCall = spy.firstCall.thisValue;
+        const secondCall = spy.secondCall.thisValue;
+        const thirdCall = spy.thirdCall.thisValue;
+        expect(callCount).to.be.equal(3);
+        expect(firstCall).to.be.eql(context);
+        expect(secondCall).to.be.eql(context);
+        expect(thirdCall).to.be.eql(context);
     });
 });
