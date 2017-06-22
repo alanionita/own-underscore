@@ -121,6 +121,8 @@ _.reject = function (list, predicate, context = null) {
     }
 };
 
+_.uniq = function () {};
+
 if (typeof module !== 'undefined') {
     module.exports = _;
 }

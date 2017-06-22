@@ -396,3 +396,9 @@ describe('_.reject', function () {
         expect(thirdCall).to.be.eql(context);
     });
 });
+
+describe('_.uniq', function () {
+    it('it should be a function', () => {
+        expect(_.uniq).to.be.a('function');
+    });
+});
