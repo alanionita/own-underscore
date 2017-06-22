@@ -1,6 +1,5 @@
 const _ = {};
 // Tasks
-// 7. reject
 // 8. uniq
 // 9. map
 // 10. contains
@@ -91,14 +90,15 @@ _.indexOf = function (array, target, isSorted) {
     }
 };
 
-_.filter = function (list, predicate) {
+_.filter = function (list, predicate, context = null) {
     if (Array.isArray(list) || typeof list === 'object') {
         let result = [];
-        _.each(list, function (elem) {
-            if (predicate(elem)) {
+        const iteratee = function (elem) {
+            if (predicate.call(context, elem)) {
                 result.push(elem);
             }
-        });
+        };
+        _.each(list, iteratee);
         return result;
     }
 };

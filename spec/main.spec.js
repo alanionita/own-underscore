@@ -186,7 +186,6 @@ describe('_.each', function () {
         };
         _.each(list, spy, context);
         // checking spy properties
-
         const callCount = spy.callCount;
         const firstCall = spy.firstCall.thisValue;
         const secondCall = spy.secondCall.thisValue;
@@ -323,6 +322,28 @@ describe('_.filter', function () {
         let actual = _.filter(input, predicate);
         expect(actual).to.be.eql([2]);
     });
+    it('when context is passed the predicate is bound to it', () => {
+        const spy = sinon.spy();
+
+        // declaring the paramaters for the _each function
+
+        const list = [1, 2, 3];
+        const context = {
+            a: 4,
+            b: 5,
+            c: 6
+        };
+        _.filter(list, spy, context);
+        // checking spy properties
+        const callCount = spy.callCount;
+        const firstCall = spy.firstCall.thisValue;
+        const secondCall = spy.secondCall.thisValue;
+        const thirdCall = spy.thirdCall.thisValue;
+        expect(callCount).to.be.equal(3);
+        expect(firstCall).to.be.eql(context);
+        expect(secondCall).to.be.eql(context);
+        expect(thirdCall).to.be.eql(context);
+    });
 });
 
 describe('_.reject', function () {
@@ -335,23 +356,23 @@ describe('_.reject', function () {
         expect(actual1).to.be.undefined;
     });
     it('return an array without the elemets that pass the predicate', () => {
-        const list = [1,2,3];
+        const list = [1, 2, 3];
         const predicate = function (num) { return num % 2 === 0; };
         const actual = _.reject(list, predicate);
-        const expected = [1,3];
+        const expected = [1, 3];
         expect(actual).to.eql(expected);
     });
     it('works exactly the same with objects', () => {
         const list = {
-            '1':1,
-            '2':2,
-            '3':3
+            '1': 1,
+            '2': 2,
+            '3': 3
         };
         const predicate = function (num) { return num % 2 === 0; };
         const actual = _.reject(list, predicate);
         const expected = {
-            '1':1,
-            '3':3
+            '1': 1,
+            '3': 3
         };
         expect(actual).to.eql(expected);
     });
