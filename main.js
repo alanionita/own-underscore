@@ -1,6 +1,5 @@
 const _ = {};
 // Tasks
-// 8. uniq
 // 9. map
 // 10. contains
 
@@ -151,6 +150,10 @@ _.uniq = function (array, isSorted, iteratee) {
         }
     }
 };
+
+_.map = function () {
+    
+}
 
 if (typeof module !== 'undefined') {
     module.exports = _;
