@@ -117,15 +117,27 @@ _.reject = function (list, predicate, context = null) {
     }
 };
 
-_.uniq = function (array) {
-    if (Array.isArray(array)) {
-        let result = [];
-        for (let i = 0; i < array.length; i++) {
-            if (result.indexOf(array[i]) === -1) {
-                result.push(array[i]);
+_.uniq = function (array, isSorted) {
+    if (isSorted) {
+        if (Array.isArray(array)) {
+            let result = [];
+            for (let i = 0; i < array.length; i++) {
+                if (array[i] !== result[result.length - 1]) {
+                    result.push(array[i]);
+                }
             }
+            return result;
         }
-        return result;
+    } else {
+        if (Array.isArray(array)) {
+            let result = [];
+            for (let i = 0; i < array.length; i++) {
+                if (result.indexOf(array[i]) === -1) {
+                    result.push(array[i]);
+                }
+            }
+            return result;
+        }
     }
 };
 

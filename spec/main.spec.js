@@ -412,4 +412,11 @@ describe.only('_.uniq', function () {
         let expected = [1,2,3];
         expect(actual).to.eql(expected);
     });
+
+    it('returns a copy of the array using only the unique values, when the array is sorted', () => {
+        let input = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,3];
+        let actual = _.uniq(input, true);
+        let expected = [1,2,3];
+        expect(actual).to.eql(expected);
+    });
 });
