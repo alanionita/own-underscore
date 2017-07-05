@@ -419,4 +419,14 @@ describe.only('_.uniq', function () {
         let expected = [1,2,3];
         expect(actual).to.eql(expected);
     });
+
+    it('returns a copy of the array using only the unique values, when the iteratee is passed', () => {
+        let input = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,3];
+        let iteratee = (num) => {
+            if (num % 2 === 0) return num;
+        }
+        let actual = _.uniq(input, false, iteratee);
+        let expected = [2];
+        expect(actual).to.eql(expected);
+    });
 });

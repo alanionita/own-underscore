@@ -117,13 +117,24 @@ _.reject = function (list, predicate, context = null) {
     }
 };
 
-_.uniq = function (array, isSorted) {
+_.uniq = function (array, isSorted, iteratee) {
     if (isSorted) {
         if (Array.isArray(array)) {
             let result = [];
             for (let i = 0; i < array.length; i++) {
                 if (array[i] !== result[result.length - 1]) {
                     result.push(array[i]);
+                }
+            }
+            return result;
+        }
+    } else if (iteratee) {
+        if (Array.isArray(array)) {
+            let iterateeRes = _.filter(array, iteratee);
+            let result = [];
+            for (let i = 0; i < iterateeRes.length; i++) {
+                if (iterateeRes[i] !== result[result.length - 1]) {
+                    result.push(iterateeRes[i]);
                 }
             }
             return result;
