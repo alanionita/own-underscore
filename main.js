@@ -151,9 +151,13 @@ _.uniq = function (array, isSorted, iteratee) {
     }
 };
 
-_.map = function () {
-    
-}
+_.map = function (list, iteratee) {
+    const result = [];
+    for (let i = 0; i < list.length; i++) {
+        result.push(iteratee.call(this, list[i], list.indexOf(list[i]), list));
+    }
+    return result;
+};
 
 if (typeof module !== 'undefined') {
     module.exports = _;

@@ -431,8 +431,14 @@ describe('_.uniq', function () {
     });
 });
 
-describe('_.map', function () {
+describe.only('_.map', function () {
     it('should be a function', () => {
         expect(_.map).to.be.a('function');
+    });
+    it('produces a new array, after transforming each elem using the iteratee function', () => {
+        let list = [1,2,3];
+        let iteratee = function(num) { return num * 3; };
+        let expected = [3,6,9];
+        expect(_.map(list, iteratee)).to.eql(expected);
     });
 });
