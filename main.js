@@ -151,10 +151,12 @@ _.uniq = function (array, isSorted, iteratee) {
     }
 };
 
-_.map = function (list, iteratee) {
+_.map = function (list, iteratee, context) {
+    let thisParam = list;
+    if (context) {thisParam = context;}
     const result = [];
     for (let i = 0; i < list.length; i++) {
-        result.push(iteratee.call(this, list[i], list.indexOf(list[i]), list));
+        result.push(iteratee.call(thisParam, list[i], list.indexOf(list[i]), list));
     }
     return result;
 };

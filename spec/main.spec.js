@@ -441,4 +441,23 @@ describe.only('_.map', function () {
         let expected = [3,6,9];
         expect(_.map(list, iteratee)).to.eql(expected);
     });
+    it('when context is passed, bind the iteratee to the context', function () {
+        const spy = sinon.spy();
+        const list = [1,2,3];
+        const context = {
+            a: 4,
+            b: 5,
+            c: 6
+        };
+        _.map(list, spy, context);
+        // checking spy properties
+        const callCount = spy.callCount;
+        const firstCall = spy.firstCall.thisValue;
+        const secondCall = spy.secondCall.thisValue;
+        const thirdCall = spy.thirdCall.thisValue;
+        expect(callCount).to.be.equal(3);
+        expect(firstCall).to.be.eql(context);
+        expect(secondCall).to.be.eql(context);
+        expect(thirdCall).to.be.eql(context);
+    });
 });
