@@ -161,6 +161,10 @@ _.map = function (list, iteratee, context) {
     return result;
 };
 
+_.contains = function () {
+
+};
+
 if (typeof module !== 'undefined') {
     module.exports = _;
 }

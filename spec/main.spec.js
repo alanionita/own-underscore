@@ -407,21 +407,21 @@ describe('_.uniq', function () {
         expect(actual).to.be.undefined;
     });
     it('return a copy of the array using only the unique values', () => {
-        let input = [1,2,2,3];
+        let input = [1, 2, 2, 3];
         let actual = _.uniq(input);
-        let expected = [1,2,3];
+        let expected = [1, 2, 3];
         expect(actual).to.eql(expected);
     });
 
     it('returns a copy of the array using only the unique values, when the array is sorted', () => {
-        let input = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,3];
+        let input = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 3];
         let actual = _.uniq(input, true);
-        let expected = [1,2,3];
+        let expected = [1, 2, 3];
         expect(actual).to.eql(expected);
     });
 
     it('returns a copy of the array using only the unique values, when the iteratee is passed', () => {
-        let input = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,3];
+        let input = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 3];
         let iteratee = (num) => {
             if (num % 2 === 0) return num;
         }
@@ -431,19 +431,19 @@ describe('_.uniq', function () {
     });
 });
 
-describe.only('_.map', function () {
+describe('_.map', function () {
     it('should be a function', () => {
         expect(_.map).to.be.a('function');
     });
     it('produces a new array, after transforming each elem using the iteratee function', () => {
-        let list = [1,2,3];
-        let iteratee = function(num) { return num * 3; };
-        let expected = [3,6,9];
+        let list = [1, 2, 3];
+        let iteratee = function (num) { return num * 3; };
+        let expected = [3, 6, 9];
         expect(_.map(list, iteratee)).to.eql(expected);
     });
     it('when context is passed, bind the iteratee to the context', function () {
         const spy = sinon.spy();
-        const list = [1,2,3];
+        const list = [1, 2, 3];
         const context = {
             a: 4,
             b: 5,
@@ -459,5 +459,11 @@ describe.only('_.map', function () {
         expect(firstCall).to.be.eql(context);
         expect(secondCall).to.be.eql(context);
         expect(thirdCall).to.be.eql(context);
+    });
+});
+
+describe('_.contains', function () {
+    it('should be a function', () => {
+        expect(_.contains).to.be.a('function');
     });
 });
