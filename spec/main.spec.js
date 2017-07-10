@@ -424,7 +424,7 @@ describe('_.uniq', function () {
         let input = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 3];
         let iteratee = (num) => {
             if (num % 2 === 0) return num;
-        }
+        };
         let actual = _.uniq(input, false, iteratee);
         let expected = [2];
         expect(actual).to.eql(expected);
@@ -465,5 +465,10 @@ describe('_.map', function () {
 describe('_.contains', function () {
     it('should be a function', () => {
         expect(_.contains).to.be.a('function');
+    });
+    it('should return true if the value is present in the list', () => {
+        let value = 2;
+        let list = [1,2,3];
+        expect(_.contains(list, value)).to.be.true;
     });
 });

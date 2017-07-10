@@ -161,8 +161,14 @@ _.map = function (list, iteratee, context) {
     return result;
 };
 
-_.contains = function () {
-
+_.contains = function (list, value) {
+    if (list instanceof Array) {
+        if (list.indexOf(value) > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 };
 
 if (typeof module !== 'undefined') {
