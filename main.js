@@ -153,7 +153,7 @@ _.uniq = function (array, isSorted, iteratee) {
 
 _.map = function (list, iteratee, context) {
     let thisParam = list;
-    if (context) {thisParam = context;}
+    if (context) { thisParam = context; }
     const result = [];
     for (let i = 0; i < list.length; i++) {
         result.push(iteratee.call(thisParam, list[i], list.indexOf(list[i]), list));
@@ -161,12 +161,22 @@ _.map = function (list, iteratee, context) {
     return result;
 };
 
-_.contains = function (list, value) {
+_.contains = function (list, value, fromIndex) {
     if (list instanceof Array) {
-        if (list.indexOf(value) > 0) {
-            return true;
+        if (fromIndex) {
+            for (let i = fromIndex; i < list.length; i++) {
+                if (list[i] === value) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
         } else {
-            return false;
+            if (list.indexOf(value) > 0) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 };
