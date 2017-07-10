@@ -178,6 +178,12 @@ _.contains = function (list, value, fromIndex) {
                 return false;
             }
         }
+    } else if (list instanceof Object) {
+        if (list[value] === undefined) {
+            return false;
+        } else {
+            return true;
+        }
     }
 };
 

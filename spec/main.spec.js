@@ -468,13 +468,22 @@ describe('_.contains', function () {
     });
     it('should return true if the value is present in the list', () => {
         let value = 2;
-        let list = [1,2,3];
+        let list = [1, 2, 3];
         expect(_.contains(list, value)).to.be.true;
     });
     it('when fromIndex is passed start searching from that index', () => {
         let value = 2;
-        let list = [4,1,2,3];
-        let fromIndex = 1; 
+        let list = [4, 1, 2, 3];
+        let fromIndex = 1;
         expect(_.contains(list, value, fromIndex)).to.be.false;
+    });
+    it('works with objects', () => {
+        let value = 2;
+        let list = {
+            '1': 1,
+            '2': 2,
+            '3': 3
+        };
+        expect(_.contains(list, value)).to.be.true;
     });
 });
