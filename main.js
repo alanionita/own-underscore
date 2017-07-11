@@ -198,6 +198,10 @@ _.contains = function (list, value, fromIndex) {
     }
 };
 
+_.once = function () {
+    
+}
+
 if (typeof module !== 'undefined') {
     module.exports = _;
 }

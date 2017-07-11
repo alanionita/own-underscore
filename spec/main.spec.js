@@ -487,3 +487,9 @@ describe('_.contains', function () {
         expect(_.contains(list, value)).to.be.true;
     });
 });
+
+describe('_.once', function () {
+    it('should exist and be a function', function () {
+        expect(_.once).to.be.a('function');
+    })
+});
