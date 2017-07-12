@@ -1,16 +1,27 @@
 const _ = {};
-// Tasks
-// 3. shuffle
-// 4. invoke
-// 13. delay
-// 9. intersection
-// 10. difference
-// 8. flatten
-// 7. sortedIndex
-// 6. zip
-// 5. sortBy (NB the Underscore library uses the native JavaScript sort but feel free to use your sort algorithm!)
-// 2. memoize
-// 12. throttle
+
+// Helpers 
+const { shuffler, returnObjectValues } = require('./helpers');
+
+
+// TASKS:
+// shuffle
+// invoke
+// delay
+// intersection
+// difference
+// flatten
+// sortedIndex
+// zip
+// sortBy (NB the Underscore library uses the native JavaScript sort but feel free to use your sort algorithm!)
+// memoize
+// throttle
+// pluck
+// reduce
+// every
+// some
+// extends
+// defaults
 
 _.identity = function (args) {
     return args;
@@ -196,6 +207,8 @@ _.contains = function (list, value, fromIndex) {
     }
 };
 
+// look at basic advanced 6 more
+
 _.once = function (func) {
     let invoked = false;
     let result;
@@ -204,15 +217,19 @@ _.once = function (func) {
         if (invoked === false) {
             result = func();
             invoked = true;
-        } 
+        }
         return result;
     };
 
     return innerFunc;
 };
 
-_.shuffle = function () {
-
+_.shuffle = function (list) {
+    if (list instanceof Array) {
+        return shuffler(list);
+    } else if (list instanceof Object) {
+        return shuffler(returnObjectValues(list));
+    }
 };
 
 if (typeof module !== 'undefined') {

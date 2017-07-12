@@ -2,6 +2,9 @@ const { expect } = require('chai');
 const sinon = require('sinon');
 const _ = require('../main.js');
 
+// Helpers
+const { returnObjectValues } = require('../helpers');
+
 describe('_.own-underscore', function () {
     'use strict';
     it('is an object', function () {
@@ -514,5 +517,24 @@ describe('_.shuffle', () => {
     it('should exist and be a function', () => {
         expect(_.shuffle).to.exist;
         expect(_.shuffle).to.be.a('function');
+    });
+    it('return a shuffled copy of the list using Fisher-Yates shuffle', () => {
+        const list = [1, 2, 3, 4, 5, 6];
+        const output = _.shuffle(list);
+        expect(list.length).to.equal(output.length);
+        expect(output).to.have.members(list);
+    });
+    it('should work for objects', () => {
+        const list = {
+            'a': 1, 
+            'b': 2, 
+            'c':3,
+            'd':4,
+            'e':5
+        };
+        const output = _.shuffle(list);
+        const listValues = returnObjectValues(list); 
+        expect(listValues.length).to.equal(output.length);
+        expect(output).to.have.members(listValues);
     });
 });
