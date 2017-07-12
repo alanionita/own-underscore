@@ -1,7 +1,5 @@
 const _ = {};
 // Tasks
-// 11. indexOf (again, this time with a binary search)
-// 1. once
 // 3. shuffle
 // 4. invoke
 // 13. delay
@@ -211,6 +209,10 @@ _.once = function (func) {
     };
 
     return innerFunc;
+};
+
+_.shuffle = function () {
+
 };
 
 if (typeof module !== 'undefined') {

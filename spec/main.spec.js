@@ -509,3 +509,10 @@ describe('_.once', function () {
         expect(_.once(input)).to.a('function');
     });
 });
+
+describe('_.shuffle', () => {
+    it('should exist and be a function', () => {
+        expect(_.shuffle).to.exist;
+        expect(_.shuffle).to.be.a('function');
+    });
+});
