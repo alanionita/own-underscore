@@ -5,7 +5,6 @@ const { shuffler, returnObjectValues } = require('./helpers');
 
 
 // TASKS:
-// shuffle
 // invoke
 // delay
 // intersection
@@ -172,12 +171,10 @@ _.uniq = function (array, isSorted, iteratee) {
 };
 
 _.map = function (list, iteratee, context) {
-    let thisParam = list;
-    if (context) { thisParam = context; }
     const result = [];
-    for (let i = 0; i < list.length; i++) { // each
-        result.push(iteratee.call(thisParam, list[i], list.indexOf(list[i]), list));
-    }
+    _.each(list, function (value, index) {
+        result.push(iteratee.call(context, value, index, list));
+    });
     return result;
 };
 
