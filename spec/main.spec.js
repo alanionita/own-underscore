@@ -491,5 +491,17 @@ describe('_.contains', function () {
 describe('_.once', function () {
     it('should exist and be a function', function () {
         expect(_.once).to.be.a('function');
-    })
+    });
+    it('function should only we called once', function () {
+        const spy = sinon.spy();
+        let testLimit = _.once(spy);
+                        _.once(spy);
+                        _.once(spy);
+                        _.once(spy);
+                        _.once(spy);
+                        _.once(spy);
+                        _.once(spy);
+        testLimit();
+        expect(spy.callCount).to.equal(1);
+    });
 });

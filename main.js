@@ -1,18 +1,18 @@
 const _ = {};
 // Tasks
+// 11. indexOf (again, this time with a binary search)
 // 1. once
-// 2. memoize
 // 3. shuffle
 // 4. invoke
-// 5. sortBy (NB the Underscore library uses the native JavaScript sort but feel free to use your sort algorithm!)
-// 6. zip
-// 7. sortedIndex
-// 8. flatten
+// 13. delay
 // 9. intersection
 // 10. difference
-// 11. indexOf (again, this time with a binary search)
+// 8. flatten
+// 7. sortedIndex
+// 6. zip
+// 5. sortBy (NB the Underscore library uses the native JavaScript sort but feel free to use your sort algorithm!)
+// 2. memoize
 // 12. throttle
-// 13. delay
 
 _.identity = function (args) {
     return args;
@@ -113,7 +113,7 @@ _.reject = function (list, predicate, context = null) {
     if (Array.isArray(list)) {
         _.each(list, (elem, i) => {
             if (predicate.call(context, elem)) {
-                list.splice(i, 1);
+                list.splice(i, 1); // dont' mutate
             }
         });
         return list;
@@ -166,7 +166,7 @@ _.map = function (list, iteratee, context) {
     let thisParam = list;
     if (context) { thisParam = context; }
     const result = [];
-    for (let i = 0; i < list.length; i++) {
+    for (let i = 0; i < list.length; i++) { // each
         result.push(iteratee.call(thisParam, list[i], list.indexOf(list[i]), list));
     }
     return result;
@@ -198,9 +198,20 @@ _.contains = function (list, value, fromIndex) {
     }
 };
 
-_.once = function () {
-    
-}
+_.once = function (func) {
+    let invoked = false;
+    let result;
+
+    const innerFunc = () => {
+        if (invoked === false) {
+            result = func();
+            invoked = true;
+        } 
+        return result;
+    };
+
+    return innerFunc;
+};
 
 if (typeof module !== 'undefined') {
     module.exports = _;
