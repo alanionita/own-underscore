@@ -495,13 +495,17 @@ describe('_.once', function () {
     it('function should only we called once', function () {
         const spy = sinon.spy();
         let testLimit = _.once(spy);
-                        _.once(spy);
-                        _.once(spy);
-                        _.once(spy);
-                        _.once(spy);
-                        _.once(spy);
-                        _.once(spy);
+        _.once(spy);
+        _.once(spy);
+        _.once(spy);
+        _.once(spy);
+        _.once(spy);
+        _.once(spy);
         testLimit();
         expect(spy.callCount).to.equal(1);
+    });
+    it('it only works with functions', () => {
+        const input = 'string';
+        expect(_.once(input)).to.a('function');
     });
 });
