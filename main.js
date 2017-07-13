@@ -229,10 +229,10 @@ _.shuffle = function (list) {
     }
 };
 
-_.invoke = function (list, method) {
+_.invoke = function (list, method, argument) {
     return _.map(list, function (elem) {
         if (elem[method]) {
-            return elem[method]();
+            return elem[method](argument);
         } else { 
             return elem[method];
         }

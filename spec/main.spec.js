@@ -557,4 +557,11 @@ describe('_.invoke', function () {
         const expected = [undefined];
         expect(_.invoke(list, method)).to.eql(expected);
     });
+    it('when passed arguments, they should be passed to the method', () => {
+        const list = [[5, 1, 7], [3, 2, 1]];
+        const method = 'sort';
+        const argument = function (a,b) { return b - a;};
+        const expected = [[7, 5, 1], [3, 2, 1]];
+        expect(_.invoke(list, method, argument)).to.eql(expected);
+    });
 });
