@@ -229,6 +229,10 @@ _.shuffle = function (list) {
     }
 };
 
+_.invoke = function () {
+
+};
+
 if (typeof module !== 'undefined') {
     module.exports = _;
 }

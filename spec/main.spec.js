@@ -539,3 +539,10 @@ describe('_.shuffle', () => {
         expect(output).to.have.members(listValues);
     });
 });
+
+describe('_.invoke', function () {
+    it('exists and should be a function', () => {
+        expect(_.invoke).to.exist;
+        expect(_.invoke).to.be.a('function');
+    });
+});
