@@ -527,14 +527,14 @@ describe('_.shuffle', () => {
     });
     it('should work for objects', () => {
         const list = {
-            'a': 1, 
-            'b': 2, 
-            'c':3,
-            'd':4,
-            'e':5
+            'a': 1,
+            'b': 2,
+            'c': 3,
+            'd': 4,
+            'e': 5
         };
         const output = _.shuffle(list);
-        const listValues = returnObjectValues(list); 
+        const listValues = returnObjectValues(list);
         expect(listValues.length).to.equal(output.length);
         expect(output).to.have.members(listValues);
     });
@@ -544,5 +544,17 @@ describe('_.invoke', function () {
     it('exists and should be a function', () => {
         expect(_.invoke).to.exist;
         expect(_.invoke).to.be.a('function');
+    });
+    it('should call the method on every element of the list', () => {
+        const list = [[5, 1, 7], [3, 2, 1]];
+        const method = 'sort';
+        const expected = [[1, 5, 7], [1, 2, 3]];
+        expect(_.invoke(list, method)).to.eql(expected);
+    });
+    it('should return an array with undefined if the method doesnt exist', () => {
+        const list = { '1' : 1};
+        const method = 'splice';
+        const expected = [undefined];
+        expect(_.invoke(list, method)).to.eql(expected);
     });
 });

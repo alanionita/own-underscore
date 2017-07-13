@@ -229,8 +229,14 @@ _.shuffle = function (list) {
     }
 };
 
-_.invoke = function () {
-
+_.invoke = function (list, method) {
+    return _.map(list, function (elem) {
+        if (elem[method]) {
+            return elem[method]();
+        } else { 
+            return elem[method];
+        }
+    });
 };
 
 if (typeof module !== 'undefined') {
