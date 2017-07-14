@@ -566,3 +566,10 @@ describe('_.invoke', function () {
         expect(actual).to.deep.equal(expected);
     });
 });
+
+describe('_,delay', () => {
+    it('should exist and be a function', () => {
+        expect(_.delay).to.exist;
+        expect(_.delay).to.be.a('function');
+    });
+});

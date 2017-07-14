@@ -239,6 +239,10 @@ _.invoke = function (list, method, ...args) {
     });
 };
 
+_.delay = function () {
+
+};
+
 if (typeof module !== 'undefined') {
     module.exports = _;
 }
