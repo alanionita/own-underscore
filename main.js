@@ -5,7 +5,6 @@ const { shuffler, returnObjectValues } = require('./helpers');
 
 
 // TASKS:
-// invoke
 // delay
 // intersection
 // difference
@@ -229,10 +228,11 @@ _.shuffle = function (list) {
     }
 };
 
-_.invoke = function (list, method, argument) {
+_.invoke = function (list, method, ...args) {
     return _.map(list, function (elem) {
         if (elem[method]) {
-            return elem[method](argument);
+            elem[method].apply(elem, args);
+            return elem;
         } else { 
             return elem[method];
         }
