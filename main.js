@@ -282,11 +282,28 @@ _.difference = function (...args) {
     return result;
 };
 
-_.flatten = function (arr) {
-    return flatten(arr);
-    function flatten (array) {
+_.flatten = function (arr, shallow = false) {
+    if (shallow === false) {
+        return deepFlatten(arr);
+    }
+    else if (shallow === true) {
+        return shallowFlatten(arr)
+    }
+
+    function deepFlatten (array) {
         return array.reduce(function (acc, element) {
-            return acc.concat(Array.isArray(element) ? flatten(element) : element);
+            return acc.concat(Array.isArray(element) ? deepFlatten(element) : element);
+        }, []);
+    }
+
+    function shallowFlatten (array) {
+        return array.reduce(function (acc, element) {
+            if (Array.isArray(element) === true) {
+                return acc.concat(element);
+            } else {
+                acc.push(element);
+            }
+            return acc;
         }, []);
     }
 };

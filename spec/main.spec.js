@@ -635,4 +635,7 @@ describe('_.flatten', function () {
     it('flattens a nested array', () => {
         expect(_.flatten([1, [2], [3, [[4]]]])).to.eql([1, 2, 3, 4]);
     });
+    it('if shallow is passed it only concats one level', () => {
+        expect(_.flatten([1, [2], [3, [[4]]]], true)).to.eql([1, 2, 3, [[4]]]);
+    });
 });
