@@ -607,4 +607,7 @@ describe('_.intersection', function () {
     it('finds the common elements in a collection of arrays', () => {
         expect(_.intersection([1,2,3],[2,6,7])).to.eql([2]);
     });
+    it('testing with a bigger collection of arrays', () => {
+        expect(_.intersection([1,2,3],[2,6,7], [2,9, 10, 11, 23,], [100, 898, 89898, 2])).to.eql([2]);
+    });
 });
