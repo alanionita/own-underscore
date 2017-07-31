@@ -626,3 +626,13 @@ describe('_.difference', function () {
         expect(_.difference([1, 2, 3], [2, 6, 7], [2, 9, 10, 11, 23,], [100, 898, 89898, 2])).to.eql([1, 3]);
     });
 });
+
+describe('_.flatten', function () {
+    it('it exists and should be a function', () => {
+        expect(_.flatten).to.exist;
+        expect(_.flatten).to.be.a('function');
+    });
+    it('flattens a nested array', () => {
+        expect(_.flatten([1, [2], [3, [[4]]]])).to.eql([1, 2, 3, 4]);
+    });
+});

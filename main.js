@@ -4,7 +4,7 @@ const _ = {};
 const { shuffler, returnObjectValues } = require('./helpers');
 
 // TASKS:
-// difference
+
 // flatten
 // sortedIndex
 // zip
@@ -230,15 +230,15 @@ _.invoke = function (list, method, ...args) {
         if (elem[method]) {
             elem[method].apply(elem, args);
             return elem;
-        } else { 
+        } else {
             return elem[method];
         }
     });
 };
 
 _.delay = function (func, wait, ...args) {
-    setTimeout( function () { 
-        func.apply(this, args); 
+    setTimeout(function () {
+        func.apply(this, args);
     }, wait);
 };
 
@@ -280,6 +280,15 @@ _.difference = function (...args) {
     });
 
     return result;
+};
+
+_.flatten = function (arr) {
+    return flatten(arr);
+    function flatten (array) {
+        return array.reduce(function (acc, element) {
+            return acc.concat(Array.isArray(element) ? flatten(element) : element);
+        }, []);
+    }
 };
 
 if (typeof module !== 'undefined') {
