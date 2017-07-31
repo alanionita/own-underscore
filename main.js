@@ -5,7 +5,6 @@ const { shuffler, returnObjectValues } = require('./helpers');
 
 
 // TASKS:
-// delay
 // intersection
 // difference
 // flatten
@@ -243,6 +242,26 @@ _.delay = function (func, wait, ...args) {
     setTimeout( function () { 
         func.apply(this, args); 
     }, wait);
+};
+
+_.intersection = function (...args) {
+    let result = [];
+    _.each(args[0], function (arrayElem) {
+        let isShared = false;
+        for (let i = 1; i < args.length; i++) {
+            _.each(args[i], function (check) {
+                if (arrayElem === check) {
+                    isShared = true;
+                }
+            });
+        }
+
+        if (isShared) {
+            result.push(arrayElem);
+        }
+    });
+
+    return result;
 };
 
 if (typeof module !== 'undefined') {

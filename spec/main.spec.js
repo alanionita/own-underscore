@@ -514,7 +514,7 @@ describe('_.once', function () {
     });
 });
 
-describe('_.shuffle', () => {
+describe('_.shuffle', function () {
     it('should exist and be a function', () => {
         expect(_.shuffle).to.exist;
         expect(_.shuffle).to.be.a('function');
@@ -596,5 +596,15 @@ describe('_,delay', function () {
         clock.tick(100); 
         expect(spy.callCount).to.eql(1);
         expect(spy.args).to.eql([['param']]);
+    });
+});
+
+describe('_.intersection', function () {
+    it('it exists and should be a function', () => {
+        expect(_.intersection).to.exist;
+        expect(_.intersection).to.be.a('function');
+    });
+    it('finds the common elements in a collection of arrays', () => {
+        expect(_.intersection([1,2,3],[2,6,7])).to.eql([2]);
     });
 });
