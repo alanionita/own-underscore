@@ -569,9 +569,9 @@ describe('_.invoke', function () {
 
 describe('_,delay', function () {
     let spy;
-    beforeEach(function() {        
+    beforeEach(function () {
         spy = sinon.spy();
-      });
+    });
 
     it('should exist and be a function', () => {
         expect(_.delay).to.exist;
@@ -580,20 +580,20 @@ describe('_,delay', function () {
     it('should run the function after wait has passed', () => {
         const clock = sinon.useFakeTimers();
         _.delay(spy, 100);
-        
-        clock.tick(1); 
+
+        clock.tick(1);
 
         expect(spy.callCount).to.eql(0);
-        
-        clock.tick(100); 
-        
+
+        clock.tick(100);
+
         expect(spy.callCount).to.eql(1);
     });
     it('should call the function with the passed paramater', () => {
         const clock = sinon.useFakeTimers();
         _.delay(spy, 100, 'param');
-        
-        clock.tick(100); 
+
+        clock.tick(100);
         expect(spy.callCount).to.eql(1);
         expect(spy.args).to.eql([['param']]);
     });
@@ -605,11 +605,11 @@ describe('_.intersection', function () {
         expect(_.intersection).to.be.a('function');
     });
     it('finds the common elements in a collection of arrays, returns them in an array', () => {
-        expect(_.intersection([1,2,3],[2,6,7])).to.be.an('array');
-        expect(_.intersection([1,2,3],[2,6,7])).to.eql([2]);
+        expect(_.intersection([1, 2, 3], [2, 6, 7])).to.be.an('array');
+        expect(_.intersection([1, 2, 3], [2, 6, 7])).to.eql([2]);
     });
     it('testing with a bigger collection of arrays', () => {
-        expect(_.intersection([1,2,3],[2,6,7], [2,9, 10, 11, 23,], [100, 898, 89898, 2])).to.eql([2]);
+        expect(_.intersection([1, 2, 3], [2, 6, 7], [2, 9, 10, 11, 23,], [100, 898, 89898, 2])).to.eql([2]);
     });
 });
 
@@ -621,5 +621,8 @@ describe('_.difference', function () {
     it('returns the elements that are not present in the other arrays', () => {
         expect(_.difference([1, 2, 3, 4, 5], [5, 2, 10])).to.be.an('array');
         expect(_.difference([1, 2, 3, 4, 5], [5, 2, 10])).to.eql([1, 3, 4]);
+    });
+    it('testing with a bigger collection of arrays', () => {
+        expect(_.difference([1, 2, 3], [2, 6, 7], [2, 9, 10, 11, 23,], [100, 898, 89898, 2])).to.eql([1, 3]);
     });
 });
