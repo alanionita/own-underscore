@@ -552,7 +552,7 @@ describe('_.invoke', function () {
         expect(_.invoke(list, method)).to.eql(expected);
     });
     it('should return an array with undefined if the method doesnt exist', () => {
-        const list = { '1' : 1};
+        const list = { '1': 1 };
         const method = 'splice';
         const expected = [undefined];
         expect(_.invoke(list, method)).to.eql(expected);
@@ -560,16 +560,33 @@ describe('_.invoke', function () {
     it('when passed arguments, they should be passed to the method', () => {
         const list = [[5, 1, 7], [3, 2, 1]];
         const method = 'sort';
-        const arg = function (a,b) { return b - a;};
+        const arg = function (a, b) { return b - a; };
         const expected = [[7, 5, 1], [3, 2, 1]];
         const actual = _.invoke(list, method, arg);
         expect(actual).to.deep.equal(expected);
     });
 });
 
-describe('_,delay', () => {
+describe('_,delay', function () {
+    let spy;
+    beforeEach(function() {        
+        spy = sinon.spy();
+      })
+
     it('should exist and be a function', () => {
         expect(_.delay).to.exist;
         expect(_.delay).to.be.a('function');
+    });
+    it('should run the function after wait has passed', () => {
+        const clock = sinon.useFakeTimers();
+        _.delay(spy, 100);
+        
+        clock.tick(1); 
+
+        expect(spy.callCount).to.eql(0);
+        
+        clock.tick(100); 
+        
+        expect(spy.callCount).to.eql(1);
     });
 });

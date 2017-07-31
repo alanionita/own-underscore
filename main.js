@@ -239,8 +239,10 @@ _.invoke = function (list, method, ...args) {
     });
 };
 
-_.delay = function () {
-
+_.delay = function (func, wait, ...args) {
+    setTimeout( function () { 
+        func.apply(this, ...args); 
+    }, wait);
 };
 
 if (typeof module !== 'undefined') {
