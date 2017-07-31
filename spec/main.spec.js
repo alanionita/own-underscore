@@ -604,10 +604,22 @@ describe('_.intersection', function () {
         expect(_.intersection).to.exist;
         expect(_.intersection).to.be.a('function');
     });
-    it('finds the common elements in a collection of arrays', () => {
+    it('finds the common elements in a collection of arrays, returns them in an array', () => {
+        expect(_.intersection([1,2,3],[2,6,7])).to.be.an('array');
         expect(_.intersection([1,2,3],[2,6,7])).to.eql([2]);
     });
     it('testing with a bigger collection of arrays', () => {
         expect(_.intersection([1,2,3],[2,6,7], [2,9, 10, 11, 23,], [100, 898, 89898, 2])).to.eql([2]);
+    });
+});
+
+describe('_.difference', function () {
+    it('it exists and should be a function', () => {
+        expect(_.difference).to.exist;
+        expect(_.difference).to.be.a('function');
+    });
+    it('returns the elements that are not present in the other arrays', () => {
+        expect(_.difference([1, 2, 3, 4, 5], [5, 2, 10])).to.be.an('array');
+        expect(_.difference([1, 2, 3, 4, 5], [5, 2, 10])).to.eql([1, 3, 4]);
     });
 });

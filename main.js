@@ -3,9 +3,7 @@ const _ = {};
 // Helpers 
 const { shuffler, returnObjectValues } = require('./helpers');
 
-
 // TASKS:
-// intersection
 // difference
 // flatten
 // sortedIndex
@@ -257,6 +255,26 @@ _.intersection = function (...args) {
         }
 
         if (isShared) {
+            result.push(arrayElem);
+        }
+    });
+
+    return result;
+};
+
+_.difference = function (...args) {
+    let result = [];
+    _.each(args[0], function (arrayElem) {
+        let isUnique = true;
+        for (let i = 1; i < args.length; i++) {
+            _.each(args[i], function (check) {
+                if (arrayElem === check) {
+                    isUnique = false;
+                }
+            });
+        }
+
+        if (isUnique) {
             result.push(arrayElem);
         }
     });
