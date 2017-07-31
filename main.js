@@ -241,7 +241,7 @@ _.invoke = function (list, method, ...args) {
 
 _.delay = function (func, wait, ...args) {
     setTimeout( function () { 
-        func.apply(this, ...args); 
+        func.apply(this, args); 
     }, wait);
 };
 
