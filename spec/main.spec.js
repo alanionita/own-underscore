@@ -639,3 +639,15 @@ describe('_.flatten', function () {
         expect(_.flatten([1, [2], [3, [[4]]]], true)).to.eql([1, 2, 3, [[4]]]);
     });
 });
+
+describe('_.sortedIndex', function () {
+    it('it exists and should be a function', () => {
+        expect(_.sortedIndex).to.exist;
+        expect(_.sortedIndex).to.be.a('function');
+    });
+    it('use binary search to find the index where the new value should be inserted', () => {
+        const list = [10, 20, 30, 40, 50];
+        const value = 35;
+        expect(_.sortedIndex(list, value)).to.eql(3);
+    });
+});

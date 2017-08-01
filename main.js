@@ -4,9 +4,6 @@ const _ = {};
 const { shuffler, returnObjectValues } = require('./helpers');
 
 // TASKS:
-
-// flatten
-// sortedIndex
 // zip
 // sortBy (NB the Underscore library uses the native JavaScript sort but feel free to use your sort algorithm!)
 // memoize
@@ -81,18 +78,18 @@ _.indexOf = function (array, target, isSorted) {
     function binaryIndexOf(array, searchElement) {
         let start = 0;
         let stop = array.length - 1;
-        let mid;
-        let element;
+        let guess;
 
         while (start <= stop) {
-            mid = Math.floor((start + stop) / 2, 10);
-            element = array[mid];
-            if (element < searchElement) {
-                start = mid + 1;
-            } else if (element > searchElement) {
-                stop = mid - 1;
+            guess = Math.floor((start + stop) / 2, 10);
+            if (array[guess] === searchElement) {
+                return guess;
             } else {
-                return mid;
+                if (array[guess] < searchElement) {
+                    start = guess + 1;
+                } else {
+                    stop = guess - 1
+                }
             }
         }
         return -1;
@@ -287,16 +284,16 @@ _.flatten = function (arr, shallow = false) {
         return deepFlatten(arr);
     }
     else if (shallow === true) {
-        return shallowFlatten(arr)
+        return shallowFlatten(arr);
     }
 
-    function deepFlatten (array) {
+    function deepFlatten(array) {
         return array.reduce(function (acc, element) {
             return acc.concat(Array.isArray(element) ? deepFlatten(element) : element);
         }, []);
     }
 
-    function shallowFlatten (array) {
+    function shallowFlatten(array) {
         return array.reduce(function (acc, element) {
             if (Array.isArray(element) === true) {
                 return acc.concat(element);
@@ -307,6 +304,23 @@ _.flatten = function (arr, shallow = false) {
         }, []);
     }
 };
+
+_.sortedIndex = function (list, value) {
+    var startIndex = 0;
+    var stopIndex = list.length - 1;
+    var index = (startIndex + stopIndex) >> 1;
+
+    while (list[index] != value && startIndex < stopIndex) {
+        if (value < list[index]) {
+            stopIndex = index - 1;
+        } else if (value > list[index]) {
+            startIndex = index + 1;
+        }
+
+        return index = (startIndex + stopIndex) >> 1;
+    }
+};
+
 
 if (typeof module !== 'undefined') {
     module.exports = _;
