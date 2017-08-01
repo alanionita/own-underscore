@@ -492,6 +492,18 @@ describe('_.contains', function () {
     });
 });
 
+describe.only('_.pluck', function () {
+    it('should exist and be a function', () => {
+        expect(_.pluck).to.exist;
+        expect(_.pluck).to.be.a('function');
+    });
+    it('extracts the list of property values from a collection', () => {
+        const stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+        const expected = ['moe', 'larry', 'curly'];
+        expect(_.pluck(stooges, 'name')).to.eql(expected);
+    });
+});
+
 describe('_.once', function () {
     it('should exist and be a function', function () {
         expect(_.once).to.be.a('function');
