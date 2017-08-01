@@ -88,14 +88,13 @@ _.indexOf = function (array, target, isSorted) {
                 if (array[guess] < searchElement) {
                     start = guess + 1;
                 } else {
-                    stop = guess - 1
+                    stop = guess - 1;
                 }
             }
         }
         return -1;
     }
 };
-
 
 _.filter = function (list, predicate, context = null) {
     if (Array.isArray(list) || typeof list === 'object') {
@@ -320,6 +319,14 @@ _.sortedIndex = function (list, value) {
         return index = (startIndex + stopIndex) >> 1;
     }
 };
+
+_.zip = function (...args) {
+    return Object.keys(args[0]).map(function (key) {
+        return args.map(function (array) {
+            return array[key];
+        });
+    });
+}; 
 
 
 if (typeof module !== 'undefined') {
