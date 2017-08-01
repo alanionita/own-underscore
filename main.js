@@ -4,7 +4,6 @@ const _ = {};
 const { shuffler, returnObjectValues } = require('./helpers');
 
 // TASKS:
-// zip
 // sortBy (NB the Underscore library uses the native JavaScript sort but feel free to use your sort algorithm!)
 // memoize
 // throttle
@@ -196,6 +195,7 @@ _.contains = function (list, value, fromIndex) {
     }
 };
 
+
 // look at basic advanced 6 more
 
 _.once = function (func) {
@@ -328,6 +328,21 @@ _.zip = function (...args) {
     });
 }; 
 
+_.sortBy = function (list, iteratee) {
+    if (typeof iteratee === 'function') {
+        return list.sort(
+            function (a, b) {
+                return iteratee(a) - iteratee(b);
+            }
+        );
+    } else {
+        return list.sort(
+            function (a, b) {
+                return a[iteratee] - b[iteratee];
+            }
+        );
+    }
+};
 
 if (typeof module !== 'undefined') {
     module.exports = _;

@@ -662,3 +662,18 @@ describe('_.zip', function () {
         expect(_.zip(['moe', 'larry', 'curly'], [30, 40, 50], [true, false, false])).to.eql(output);
     });
 });
+
+describe('_.sortBy', function () {
+    it('it exists and should be a function', () => {
+        expect(_.sortBy).to.exist;
+        expect(_.sortBy).to.be.a('function');
+    }); 
+    it('returns a (stably) sorted copy of the list, ranked in ascending order by the results of running each value though the iteratee', () => {
+        const list = [1, 2, 3, 4, 5, 6];
+        const iteratee = function (num) { 
+            return Math.sin(num);
+        };
+        const expected = [5, 4, 6, 3, 1, 2];
+        expect(_.sortBy(list, iteratee)).to.eql(expected);
+    });
+});
