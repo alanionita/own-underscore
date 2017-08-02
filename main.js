@@ -10,16 +10,8 @@ _.identity = function (args) {
     return args;
 };
 
-_.first = function (array, n) {
-    if (n) {
-        if (Array.isArray(array)) {
-            return array.slice(0, n);
-        }
-    } else {
-        if (Array.isArray(array)) {
-            return array[0];
-        }
-    }
+_.first = function (collection, n = undefined) {
+    return n === undefined ? collection[0] : collection.slice(0, n);
 };
 
 _.last = function (array, n) {

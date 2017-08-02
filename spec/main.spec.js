@@ -99,10 +99,12 @@ describe('_.first', function () {
         expect(_.first).to.exist;
         expect(_.first).to.be.a('function');
     });
-    it('only works with arrays', function () {
+    it('works with strings', function () {
         let input = 'string';
-        let actual = _.first(input);
-        expect(actual).to.be.undefined;
+        let actual1 = _.first(input);
+        let actual2 = _.first(input, 2);
+        expect(actual1).to.eql('s');
+        expect(actual2).to.eql('st');
     });
 
     it('returns the first element of an array', function () {
