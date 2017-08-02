@@ -401,6 +401,8 @@ _.memoize = function (func) {
     };
 };
 
+_.throttle = function () {};
+
 if (typeof module !== 'undefined') {
     module.exports = _;
 }

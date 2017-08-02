@@ -868,3 +868,9 @@ describe('_.memoize', function () {
     });
 });
 
+describe('_.throttle', function () {
+    it('should exist and be a function', () => {
+        expect(_.throttle).to.exist;
+        expect(_.throttle).to.be.a('function');
+    });
+});
