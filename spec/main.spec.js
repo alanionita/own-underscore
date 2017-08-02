@@ -154,10 +154,10 @@ describe('_.last', function () {
         expect(_.last).to.exist;
         expect(_.last).to.be.a('function');
     });
-    it('only works with arrays', function () {
+    it('works with strings', function () {
         const input = 'string';
         const actual = _.last(input);
-        expect(actual).to.be.undefined;
+        expect(actual).to.eql('g');
     });
     it('returns the last element of an array', function () {
         const input = ['a', 'r', 'r', 'a', 'y'];

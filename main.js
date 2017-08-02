@@ -14,16 +14,8 @@ _.first = function (collection, n = undefined) {
     return n === undefined ? collection[0] : Object.entries(collection).slice(0, n).map(key => key[1]) || collection.slice(0, n);
 };
 
-_.last = function (array, n) {
-    if (n) {
-        if (Array.isArray(array)) {
-            return array.slice(-n);
-        }
-    } else {
-        if (Array.isArray(array)) {
-            return array.pop();
-        }
-    }
+_.last = function (array, n = undefined) {
+    return n !== undefined ? array.slice(-n) : array.slice(-1, array.length).toString();
 };
 
 _.each = function (list, iteratee, context) {
