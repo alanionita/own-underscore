@@ -155,28 +155,28 @@ describe('_.last', function () {
         expect(_.last).to.be.a('function');
     });
     it('only works with arrays', function () {
-        let input = 'string';
-        let actual = _.last(input);
+        const input = 'string';
+        const actual = _.last(input);
         expect(actual).to.be.undefined;
     });
     it('returns the last element of an array', function () {
-        let input = ['a', 'r', 'r', 'a', 'y'];
-        let actual = _.last(input);
-        let expected = 'y';
+        const input = ['a', 'r', 'r', 'a', 'y'];
+        const actual = _.last(input);
+        const expected = 'y';
         expect(actual).to.equal(expected);
     });
     it('if passed a second argument [n], returns an array of the last [n] x elements', function () {
-        let arg1 = ['a', 'r', 'r', 'a', 'y'];
-        let arg2 = 2;
-        let actual = _.last(arg1, arg2);
-        let expected = ['a', 'y'];
+        const arg1 = ['a', 'r', 'r', 'a', 'y'];
+        const arg2 = 2;
+        const actual = _.last(arg1, arg2);
+        const expected = ['a', 'y'];
         expect(actual).to.eql(expected);
     });
     it('if [n] is greater than the array length, return the whole array', function () {
-        let arg1 = ['a', 'r', 'r', 'a', 'y'];
-        let arg2 = Infinity;
-        let actual = _.last(arg1, arg2);
-        let expected = ['a', 'r', 'r', 'a', 'y'];
+        const arg1 = ['a', 'r', 'r', 'a', 'y'];
+        const arg2 = Infinity;
+        const actual = _.last(arg1, arg2);
+        const expected = ['a', 'r', 'r', 'a', 'y'];
         expect(actual).to.eql(expected);
     });
 });
@@ -188,8 +188,8 @@ describe('_.each', function () {
         expect(_.each).to.be.a('function');
     });
     it('iterates over a list of elements, yielding each in turn to an iteratee function', function () {
-        let list = ['a', 'r', 'r', 'a', 'y'];
-        let spy = sinon.spy();
+        const list = ['a', 'r', 'r', 'a', 'y'];
+        const spy = sinon.spy();
         _.each(list, spy);
         expect(spy.callCount).to.equal(list.length);
     });
