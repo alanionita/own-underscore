@@ -81,39 +81,23 @@ _.reject = function (list, predicate, context) {
     });
 };
 
-_.uniq = function (array, isSorted, iteratee) {
-    if (isSorted) {
-        if (Array.isArray(array)) {
-            let result = [];
-            for (let i = 0; i < array.length; i++) {
-                if (array[i] !== result[result.length - 1]) {
-                    result.push(array[i]);
-                }
+_.uniq = function (array, isSorted, iteratee = null) {
+    const result = [];
+    if (iteratee === null) {
+        _.each(array, (item) => {
+            if (result.indexOf(item) === -1) {
+                result.push(item);
             }
-            return result;
-        }
-    } else if (iteratee) {
-        if (Array.isArray(array)) {
-            let iterateeRes = _.filter(array, iteratee);
-            let result = [];
-            for (let i = 0; i < iterateeRes.length; i++) {
-                if (iterateeRes[i] !== result[result.length - 1]) {
-                    result.push(iterateeRes[i]);
-                }
-            }
-            return result;
-        }
+        });
     } else {
-        if (Array.isArray(array)) {
-            let result = [];
-            for (let i = 0; i < array.length; i++) {
-                if (result.indexOf(array[i]) === -1) {
-                    result.push(array[i]);
-                }
+        const iterateeRes = _.filter(array, iteratee);
+        _.each(iterateeRes, (item) => {
+            if (result.indexOf(item) === -1) {
+                result.push(item);
             }
-            return result;
-        }
+        });
     }
+    return result;
 };
 
 _.map = function (list, iteratee, context) {

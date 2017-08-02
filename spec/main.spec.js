@@ -440,32 +440,33 @@ describe('_.uniq', function () {
     it('it should be a function', () => {
         expect(_.uniq).to.be.a('function');
     });
-    it('only works with arrays', () => {
-        let input = 'string';
-        let actual = _.uniq(input);
-        expect(actual).to.be.undefined;
+    it('works with strings', () => {
+        const input = 'sttring';
+        const actual = _.uniq(input);
+        const expected = ['s','t', 'r', 'i', 'n', 'g'];
+        expect(actual).to.eql(expected);
     });
     it('return a copy of the array using only the unique values', () => {
-        let input = [1, 2, 2, 3];
-        let actual = _.uniq(input);
-        let expected = [1, 2, 3];
+        const input = [1, 2, 2, 3];
+        const actual = _.uniq(input);
+        const expected = [1, 2, 3];
         expect(actual).to.eql(expected);
     });
 
     it('returns a copy of the array using only the unique values, when the array is sorted', () => {
-        let input = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 3];
-        let actual = _.uniq(input, true);
-        let expected = [1, 2, 3];
+        const input = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 3];
+        const actual = _.uniq(input, true);
+        const expected = [1, 2, 3];
         expect(actual).to.eql(expected);
     });
 
     it('returns a copy of the array using only the unique values, when the iteratee is passed', () => {
-        let input = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 3];
-        let iteratee = (num) => {
+        const input = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 3];
+        const iteratee = (num) => {
             if (num % 2 === 0) return num;
         };
-        let actual = _.uniq(input, false, iteratee);
-        let expected = [2];
+        const actual = _.uniq(input, false, iteratee);
+        const expected = [2];
         expect(actual).to.eql(expected);
     });
 });
@@ -475,9 +476,9 @@ describe('_.map', function () {
         expect(_.map).to.be.a('function');
     });
     it('produces a new array, after transforming each elem using the iteratee function', () => {
-        let list = [1, 2, 3];
-        let iteratee = function (num) { return num * 3; };
-        let expected = [3, 6, 9];
+        const list = [1, 2, 3];
+        const iteratee = function (num) { return num * 3; };
+        const expected = [3, 6, 9];
         expect(_.map(list, iteratee)).to.eql(expected);
     });
     it('when context is passed, bind the iteratee to the context', function () {
@@ -506,19 +507,19 @@ describe('_.contains', function () {
         expect(_.contains).to.be.a('function');
     });
     it('should return true if the value is present in the list', () => {
-        let value = 2;
-        let list = [1, 2, 3];
+        const value = 2;
+        const list = [1, 2, 3];
         expect(_.contains(list, value)).to.be.true;
     });
     it('when fromIndex is passed start searching from that index', () => {
-        let value = 2;
-        let list = [4, 1, 2, 3];
-        let fromIndex = 1;
+        const value = 2;
+        const list = [4, 1, 2, 3];
+        const fromIndex = 1;
         expect(_.contains(list, value, fromIndex)).to.be.false;
     });
     it('works with objects', () => {
-        let value = 2;
-        let list = {
+        const value = 2;
+        const list = {
             '1': 1,
             '2': 2,
             '3': 3
@@ -696,7 +697,7 @@ describe('_.once', function () {
     });
     it('function should only we called once', function () {
         const spy = sinon.spy();
-        let testLimit = _.once(spy);
+        const testLimit = _.once(spy);
         _.once(spy);
         _.once(spy);
         _.once(spy);
