@@ -20,7 +20,7 @@ _.last = function (collection, n = undefined) {
 };
 
 _.each = function (list, iteratee, context) {
-    if (Array.isArray(list)) {
+    if (Array.isArray(list) || typeof list === 'string') {
         for (let i = 0; i < list.length; i++) {
             iteratee.call(context || list, list[i], i, list);
         }
@@ -32,15 +32,15 @@ _.each = function (list, iteratee, context) {
     return list;
 };
 
-_.indexOf = function (array, target, isSorted = undefined) {
+_.indexOf = function (collection, target, isSorted = undefined) {
     if (isSorted === undefined) {
         let result = -1;
-        _.each(array, (item, index) => {
+        _.each(collection, (item, index) => {
             return item === target ? result = index : result;
         });
         return result;
     } else {
-        return binaryIndexOf(array, target);
+        return binaryIndexOf(collection, target);
     }
 
     function binaryIndexOf(array, searchElement) {

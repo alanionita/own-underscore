@@ -229,7 +229,7 @@ describe('_.each', function () {
         expect(secondCall).to.be.eql(context);
         expect(thirdCall).to.be.eql(context);
     });
-    describe('_.each should not work with primitive types passed as the list', function () {
+    describe('behaviour for each primitive type', function () {
         it('booleans return undefined', function () {
             const list = true;
             let counter = 0;
@@ -248,14 +248,14 @@ describe('_.each', function () {
             _.each(list, iteratee);
             expect(counter).to.equal(0);
         });
-        it('strings return undefined', function () {
+        it('works with strings', function () {
             const list = 'string';
             let counter = 0;
             function iteratee() {
                 return counter++;
             }
             _.each(list, iteratee);
-            expect(counter).to.equal(0);
+            expect(counter).to.equal(6);
         });
         it('null returns undefined', function () {
             const list = null;
@@ -285,8 +285,8 @@ describe('_.indexOf', function () {
     });
     it('only works with arrays passed as first param', function () {
         const input = 'string';
-        const actual = _.indexOf(input, 't');
-        expect(actual).to.eql(-1);
+        const actual = _.indexOf(input, 'r');
+        expect(actual).to.eql(2);
     });
     it('returns the index of the value when found in the array', function () {
         const array = [1, 2, 3];
