@@ -606,6 +606,28 @@ describe('_.some', function () {
     });
 });
 
+describe('_.extend', function () {
+    it('should exist and be a function', () => {
+        expect(_.extend).to.exist;
+        expect(_.extend).to.be.a('function');
+    });
+    it('copy all of the properties in the source objects over to the destination object, and return the destination object', () => {
+        const destination = {name: 'moe'};
+        const source1 = {age: 50};
+        const source2 = {location: 'Manchester'};
+        const expected = {name: 'moe', age: 50, location: 'Manchester'};
+        expect(_.extend(destination, source1, source2)).to.eql(expected);
+    });
+    it('the last source will override properties of the same name in previous arguments', () => {
+        const destination = {name: 'moe'};
+        const source1 = {age: 50};
+        const source2 = {location: 'Manchester'};
+        const source3 = {age: 80};
+        const expected = {name: 'moe', age: 80, location: 'Manchester'};
+        expect(_.extend(destination, source1, source2, source3)).to.eql(expected);
+    });
+});
+
 describe('_.once', function () {
     it('should exist and be a function', function () {
         expect(_.once).to.be.a('function');

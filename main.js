@@ -215,6 +215,14 @@ _.some = function (collection, predicate, context) {
     return false;
 };
 
+_.extend = function (obj) {
+     _.each(arguments, function(argObject) {
+      _.each(argObject, function(value, key) {
+        obj[key] = value;
+      });
+    });
+    return obj;
+};
 // look at basic advanced 6 more
 
 _.once = function (func) {
