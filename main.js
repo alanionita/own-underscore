@@ -7,8 +7,6 @@ const { shuffler, returnObjectValues } = require('./helpers');
 // memoize
 // throttle
 // reduce
-// extends
-// defaults
 
 _.identity = function (args) {
     return args;
@@ -215,16 +213,25 @@ _.some = function (collection, predicate, context) {
     return false;
 };
 
-_.extend = function (obj) {
-     _.each(arguments, function(argObject) {
-      _.each(argObject, function(value, key) {
-        obj[key] = value;
+_.extend = function (destination, ...sources) {
+     _.each(sources, function(source) {
+      _.each(source, function(value, key) {
+        destination[key] = value;
       });
     });
-    return obj;
+    return destination;
 };
-// look at basic advanced 6 more
 
+_.defaults = function (object, ...defaults) {
+    _.each(defaults, function(defaultObj) {
+      _.each(defaultObj, function(value, key) {
+          if (object[key] === undefined) {
+            object[key] = value;
+          }
+      });
+    });
+    return object;
+};
 _.once = function (func) {
     let invoked = false;
     let result;

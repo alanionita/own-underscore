@@ -628,6 +628,18 @@ describe('_.extend', function () {
     });
 });
 
+describe('_.defaults', function () {
+    it('should exist and be a function', () => {
+        expect(_.defaults).to.exist;
+        expect(_.defaults).to.be.a('function');
+    });
+    it('fill in undefined properties in object with the first value present in the following list of defaults objects', () => {
+        const iceCream = {flavor: 'chocolate'};
+        const expected = {flavor: 'chocolate', sprinkles: 'lots'};
+        expect(_.defaults(iceCream, {flavor: 'vanilla', sprinkles: 'lots'})).to.eql(expected);
+    });
+});
+
 describe('_.once', function () {
     it('should exist and be a function', function () {
         expect(_.once).to.be.a('function');
