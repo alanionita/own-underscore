@@ -32,19 +32,13 @@ _.each = function (list, iteratee, context) {
     return list;
 };
 
-_.indexOf = function (array, target, isSorted) {
-    if (!isSorted) {
-        if (Array.isArray(array) && (target)) {
-            let index;
-            for (let i = 0; i < array.length; i++) {
-                if (array[i] === target) {
-                    index = i;
-                } else {
-                    index = -1;
-                }
-            }
-            return index;
-        }
+_.indexOf = function (array, target, isSorted = undefined) {
+    if (isSorted === undefined) {
+        let result = -1;
+        _.each(array, (item, index) => {
+            return item === target ? result = index : result;
+        });
+        return result;
     } else {
         return binaryIndexOf(array, target);
     }

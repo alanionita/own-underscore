@@ -285,8 +285,8 @@ describe('_.indexOf', function () {
     });
     it('only works with arrays passed as first param', function () {
         const input = 'string';
-        const actual = _.indexOf(input);
-        expect(actual).to.be.undefined;
+        const actual = _.indexOf(input, 't');
+        expect(actual).to.eql(-1);
     });
     it('returns the index of the value when found in the array', function () {
         const array = [1, 2, 3];
