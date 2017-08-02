@@ -492,7 +492,7 @@ describe('_.contains', function () {
     });
 });
 
-describe.only('_.pluck', function () {
+describe('_.pluck', function () {
     it('should exist and be a function', () => {
         expect(_.pluck).to.exist;
         expect(_.pluck).to.be.a('function');
@@ -501,6 +501,53 @@ describe.only('_.pluck', function () {
         const stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
         const expected = ['moe', 'larry', 'curly'];
         expect(_.pluck(stooges, 'name')).to.eql(expected);
+    });
+});
+
+describe('_.every', function () {
+    it('should exist and be a function', () => {
+        expect(_.every).to.exist;
+        expect(_.every).to.be.a('function');
+    });
+    it('returns true if all of the values in the list pass the predicate truth test', () => {
+        const collection = [2, 4, 5];
+        const predicate = function (num) { 
+            return num % 2 == 0;
+        };
+        expect(_.every(collection, predicate)).to.be.false;
+    });
+    it('should work with objects', () => {
+        const collection = {
+            '0': '2',
+            '1': '4',
+            '2': '6'
+        };
+        const predicate = function (num) { 
+            return num % 2 == 0;
+        };
+        expect(_.every(collection, predicate)).to.be.true;
+    });
+    it('when context param is present, bind the predicate to the context', function () {
+        const spy = sinon.spy();
+
+        // declaring the paramaters for the _every function
+
+        const collection = ['1', '2', '4'];
+        const context = {
+            '0': '2',
+            '1': '4',
+            '2': '6'
+        };
+        _.every(collection, spy, context);
+        // checking spy properties
+        const callCount = spy.callCount;
+        const firstCall = spy.firstCall.thisValue;
+        const secondCall = spy.secondCall.thisValue;
+        const thirdCall = spy.thirdCall.thisValue;
+        expect(callCount).to.be.equal(3);
+        expect(firstCall).to.be.eql(context);
+        expect(secondCall).to.be.eql(context);
+        expect(thirdCall).to.be.eql(context);
     });
 });
 

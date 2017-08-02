@@ -201,6 +201,15 @@ _.pluck = function (collection, key) {
     });
 };
 
+_.every = function (collection, predicate, context) { 
+    for (let i = 0; i < collection.length; i++) {
+      if (predicate.call(context || collection, collection[i]) === false) {
+        return false;
+      }
+    }
+    return true;
+};
+
 
 // look at basic advanced 6 more
 
