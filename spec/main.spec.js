@@ -190,7 +190,6 @@ describe('_.last', function () {
 });
 
 describe('_.each', function () {
-    // Iterates over a list of elements, yielding each in turn to an iteratee function. The iteratee is bound to the context object, if one is passed. Each invocation of iteratee is called with three arguments: (element, index, list). If list is a JavaScript object, iteratee's arguments will be (value, key, list). Returns the list for chaining.
     it('should be a function', function () {
         expect(_.each).to.exist;
         expect(_.each).to.be.a('function');
@@ -202,10 +201,10 @@ describe('_.each', function () {
         expect(spy.callCount).to.equal(list.length);
     });
     it('should call the iteratee with three paramaters: element + index + list or value + key + list', function () {
-        let list = ['a'];
-        let spy = sinon.spy();
+        const list = ['a'];
+        const spy = sinon.spy();
         _.each(list, spy);
-        let argsPassedToIteratee = spy.args[0];
+        const argsPassedToIteratee = spy.args[0];
         expect(argsPassedToIteratee.length).to.equal(3);
     });
     it('when context param is present, bind the iteratee to the context', function () {
@@ -232,7 +231,7 @@ describe('_.each', function () {
     });
     describe('_.each should not work with primitive types passed as the list', function () {
         it('booleans return undefined', function () {
-            let list = true;
+            const list = true;
             let counter = 0;
             function iteratee() {
                 return counter++;
@@ -241,7 +240,7 @@ describe('_.each', function () {
             expect(counter).to.equal(0);
         });
         it('numbers return undefined', function () {
-            let list = 1267672673;
+            const list = 1267672673;
             let counter = 0;
             function iteratee() {
                 return counter++;
@@ -250,7 +249,7 @@ describe('_.each', function () {
             expect(counter).to.equal(0);
         });
         it('strings return undefined', function () {
-            let list = 'string';
+            const list = 'string';
             let counter = 0;
             function iteratee() {
                 return counter++;
@@ -259,7 +258,7 @@ describe('_.each', function () {
             expect(counter).to.equal(0);
         });
         it('null returns undefined', function () {
-            let list = null;
+            const list = null;
             let counter = 0;
             function iteratee() {
                 return counter++;
@@ -268,7 +267,7 @@ describe('_.each', function () {
             expect(counter).to.equal(0);
         });
         it('undefined returns undefined', function () {
-            let list;
+            const list = undefined;
             let counter = 0;
             function iteratee() {
                 return counter++;
