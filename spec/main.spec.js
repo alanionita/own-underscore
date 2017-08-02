@@ -570,6 +570,17 @@ describe('_.some', function () {
         };
         expect(_.some(collection, predicate)).to.be.false;
     });
+    it('checks that the functionality works with objects', () => {
+        const collection = {
+            '0': '1',
+            '1': '3',
+            '2': '5'
+        };
+        const predicate = function (num) { 
+            return num % 2 == 0;
+        };
+        expect(_.some(collection, predicate)).to.be.false;
+    });
     it('when context param is present, bind the predicate to the context', function () {
         const spy = sinon.spy();
 
