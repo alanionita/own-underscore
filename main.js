@@ -391,6 +391,8 @@ _.sortBy = function (list, iteratee) {
     }
 };
 
+_.memoize = function () {};
+
 if (typeof module !== 'undefined') {
     module.exports = _;
 }

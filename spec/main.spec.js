@@ -840,3 +840,10 @@ describe('_.sortBy', function () {
         expect(_.sortBy(list, iteratee)).to.eql(expected);
     });
 });
+
+describe('_.memoize', function () {
+    it('should exist and be a function', () => {
+        expect(_.memoize).to.exist;
+        expect(_.memoize).to.be.a('function');
+    });
+});
