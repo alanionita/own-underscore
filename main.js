@@ -4,7 +4,6 @@ const _ = {};
 const { shuffler, returnObjectValues } = require('./helpers');
 
 // TASKS:
-// memoize
 // throttle
 
 _.identity = function (args) {
@@ -391,7 +390,16 @@ _.sortBy = function (list, iteratee) {
     }
 };
 
-_.memoize = function () {};
+_.memoize = function (func) {
+    const storage = {};
+    return function () {
+        const args = JSON.stringify(arguments);
+        if (storage[args] !== true) {
+            storage[args] = func.apply(this, arguments);
+        }
+        return storage[args];
+    };
+};
 
 if (typeof module !== 'undefined') {
     module.exports = _;

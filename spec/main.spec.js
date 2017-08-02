@@ -842,8 +842,29 @@ describe('_.sortBy', function () {
 });
 
 describe('_.memoize', function () {
+    let multiply, memoMultiply;
+
+      beforeEach(function() {
+        multiply = function(a, b) {
+          return a * b;
+        };
+
+        memoMultiply = _.memoize(multiply);
+      });
+
     it('should exist and be a function', () => {
         expect(_.memoize).to.exist;
         expect(_.memoize).to.be.a('function');
     });
+    it('memoizes a given function by caching the computed result', () => {
+        expect(multiply(1,2)).to.equal(2);
+        expect(memoMultiply(1,2)).to.equal(2);
+    });
+    it('should only memoize once', () => {
+        const spy = sinon.spy();
+        const memoSpy = _.memoize(spy);
+        memoSpy(10);
+        expect(spy.callCount).to.equal(1);
+    });
 });
+
