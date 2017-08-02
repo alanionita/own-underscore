@@ -10,13 +10,13 @@ _.identity = function (args) {
     return args;
 };
 
-_.first = function (collection, n = undefined) {
-    return n === undefined ? collection[0] : Object.entries(collection).slice(0, n).map(key => key[1]) || collection.slice(0, n);
+_.first = function (collection, n = null) {
+    return n === null ? collection[0] : Object.entries(collection).slice(0, n).map(key => key[1]) || collection.slice(0, n);
 };
 
-_.last = function (collection, n = undefined) {
+_.last = function (collection, n = null) {
     if (collection instanceof Object && !Array.isArray(collection)) return undefined;
-    return n === undefined ? collection.slice(-1, collection.length).toString() : collection.slice(-n);
+    return n === null ? collection.slice(-1, collection.length).toString() : collection.slice(-n);
 };
 
 _.each = function (list, iteratee, context) {
@@ -32,8 +32,8 @@ _.each = function (list, iteratee, context) {
     return list;
 };
 
-_.indexOf = function (collection, target, isSorted = undefined) {
-    if (isSorted === undefined) {
+_.indexOf = function (collection, target, isSorted = null) {
+    if (isSorted === null) {
         let result = -1;
         _.each(collection, (item, index) => {
             return item === target ? result = index : result;
@@ -64,10 +64,10 @@ _.indexOf = function (collection, target, isSorted = undefined) {
     }
 };
 
-_.filter = function (list, predicate, context = null) {
+_.filter = function (list, predicate, context) {
     let result = [];
     const iteratee = function (elem) {
-        if (predicate.call(context, elem)) {
+        if (predicate.call(context || list, elem)) {
             result.push(elem);
         }
     };
@@ -75,22 +75,10 @@ _.filter = function (list, predicate, context = null) {
     return result;
 };
 
-_.reject = function (list, predicate, context = null) {
-    if (Array.isArray(list)) {
-        _.each(list, (elem, i) => {
-            if (predicate.call(context, elem)) {
-                list.splice(i, 1); // dont' mutate
-            }
-        });
-        return list;
-    } else if (typeof list === 'object') {
-        _.each(list, (elem) => {
-            if (predicate.call(context, elem)) {
-                delete list[elem];
-            }
-        });
-        return list;
-    }
+_.reject = function (list, predicate, context) {
+    return _.filter(list, (item) => {
+        return predicate.call(context || list, item) === false;
+    });
 };
 
 _.uniq = function (array, isSorted, iteratee) {
