@@ -401,7 +401,18 @@ _.memoize = function (func) {
     };
 };
 
-_.throttle = function () {};
+_.throttle = function (fn, wait) {
+    let canCall = true;
+    return (...args) => {
+        if (canCall === true) {
+            fn.apply(null, args);
+            canCall = false;
+            setTimeout(() => {
+                canCall = true;
+            }, wait);
+        }
+    };
+};
 
 if (typeof module !== 'undefined') {
     module.exports = _;

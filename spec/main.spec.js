@@ -866,11 +866,32 @@ describe('_.memoize', function () {
         memoSpy(10);
         expect(spy.callCount).to.equal(1);
     });
+    
 });
 
 describe('_.throttle', function () {
+    let spy;
+    beforeEach(function () {
+        spy = sinon.spy();
+    });
     it('should exist and be a function', () => {
         expect(_.throttle).to.exist;
         expect(_.throttle).to.be.a('function');
+    });
+    it('calls the passed function once per waiting period', () => {
+        const clock = sinon.useFakeTimers();
+        _.throttle(spy, 100);
+
+        clock.tick(1); // clock = 1
+
+        expect(spy.callCount).to.eql(0);
+
+        clock.tick(150); // clock = 151
+
+        expect(spy.callCount).to.eql(0); // 1
+
+        clock.tick(50); // clock = 201
+
+        expect(spy.callCount).to.eql(0);
     });
 });
