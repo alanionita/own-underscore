@@ -39,15 +39,13 @@ _.last = function (array, n) {
 };
 
 _.each = function (list, iteratee, context) {
-    let thisParam = list;
-    if (context) { thisParam = context; }
     if (Array.isArray(list)) {
         for (let i = 0; i < list.length; i++) {
-            iteratee.call(thisParam, list[i], i, list);
+            iteratee.call(context || list, list[i], i, list);
         }
     } else if (typeof list === 'object') {
         for (let key in list) {
-            iteratee.call(thisParam, list[key], key, list);
+            iteratee.call(context || list, list[key], key, list);
         }
     }
     return list;
