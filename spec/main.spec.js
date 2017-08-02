@@ -284,26 +284,26 @@ describe('_.indexOf', function () {
         expect(_.indexOf).to.be.a('function');
     });
     it('only works with arrays passed as first param', function () {
-        let input = 'string';
-        let actual = _.indexOf(input);
+        const input = 'string';
+        const actual = _.indexOf(input);
         expect(actual).to.be.undefined;
     });
     it('returns the index of the value when found in the array', function () {
-        let array = [1, 2, 3];
-        let value = 3;
-        let actual = _.indexOf(array, value);
+        const array = [1, 2, 3];
+        const value = 3;
+        const actual = _.indexOf(array, value);
         expect(actual).to.be.equal(2);
     });
     it('returns -1 if the index is not found in the array', function () {
-        let array = [1, 2, 3];
-        let value = 7;
-        let actual = _.indexOf(array, value);
+        const array = [1, 2, 3];
+        const value = 7;
+        const actual = _.indexOf(array, value);
         expect(actual).to.be.equal(-1);
     });
     it('if isSorted is passed then use binary search', function () {
-        let array = [1, 2, 3, 4, 5, 6, 7];
-        let value = 7;
-        let actual = _.indexOf(array, value, true);
+        const array = [1, 2, 3, 4, 5, 6, 7];
+        const value = 7;
+        const actual = _.indexOf(array, value, true);
         expect(actual).to.be.equal(6);
     });
     it('checks that binary search is faster than regular method', function () {
@@ -333,7 +333,7 @@ describe('_.filter', function () {
         expect(_.filter).to.be.a('function');
     });
     it('only works with arrays and objects', function () {
-        let input1 = 'string';
+        const input1 = 'string';
         let input2 = [1, 2, 3];
         let actual1 = _.filter(input1);
         let actual2 = _.filter(input2, function (num) { return num % 2 === 0; });
