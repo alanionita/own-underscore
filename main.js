@@ -6,7 +6,6 @@ const { shuffler, returnObjectValues } = require('./helpers');
 // TASKS:
 // memoize
 // throttle
-// reduce
 
 _.identity = function (args) {
     return args;
@@ -195,43 +194,57 @@ _.pluck = function (collection, key) {
     });
 };
 
-_.every = function (collection, predicate, context) { 
+_.every = function (collection, predicate, context) {
     for (let i = 0; i < collection.length; i++) {
-      if (predicate.call(context || collection, collection[i]) === false) {
-        return false;
-      }
+        if (predicate.call(context || collection, collection[i]) === false) {
+            return false;
+        }
     }
     return true;
 };
 
 _.some = function (collection, predicate, context) {
     for (let i = 0; i < collection.length; i++) {
-      if (predicate.call(context || collection, collection[i]) === true) {
-        return true;
-      }
+        if (predicate.call(context || collection, collection[i]) === true) {
+            return true;
+        }
     }
     return false;
 };
 
 _.extend = function (destination, ...sources) {
-     _.each(sources, function(source) {
-      _.each(source, function(value, key) {
-        destination[key] = value;
-      });
+    _.each(sources, function (source) {
+        _.each(source, function (value, key) {
+            destination[key] = value;
+        });
     });
     return destination;
 };
 
 _.defaults = function (object, ...defaults) {
-    _.each(defaults, function(defaultObj) {
-      _.each(defaultObj, function(value, key) {
-          if (object[key] === undefined) {
-            object[key] = value;
-          }
-      });
+    _.each(defaults, function (defaultObj) {
+        _.each(defaultObj, function (value, key) {
+            if (object[key] === undefined) {
+                object[key] = value;
+            }
+        });
     });
     return object;
 };
+
+_.reduce = function (list, iteratee, memo) {
+    let noMemo = memo === undefined;
+    _.each(list, function (item) {
+        if (noMemo === true) {
+            memo = item;
+            noMemo = false;
+        } else {
+            memo = iteratee(memo, item);
+        }
+    });
+    return memo;
+};
+
 _.once = function (func) {
     let invoked = false;
     let result;

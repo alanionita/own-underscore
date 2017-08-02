@@ -640,6 +640,21 @@ describe('_.defaults', function () {
     });
 });
 
+describe('_.reduce', function () {
+    it('should exist and be a function', () => {
+        expect(_.reduce).to.exist;
+        expect(_.reduce).to.be.a('function');
+    });
+    it('boils down a list of values into a single value', () => {
+        const list = [1, 2, 3];
+        expect(_.reduce(list, function(memo, num) { return memo + num; }, 0)).to.eql(6);
+    });
+    it('if memo is not passed the first element of the list is used', () => {
+        const list = [1, 2, 3];
+        expect(_.reduce(list, function(memo, num) { return memo + num; })).to.eql(6);
+    });
+});
+
 describe('_.once', function () {
     it('should exist and be a function', function () {
         expect(_.once).to.be.a('function');
