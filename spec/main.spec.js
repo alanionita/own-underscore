@@ -338,10 +338,13 @@ describe('_.filter', function () {
             '2': 3
         };
         const input2 = [1, 2, 3];
+        const input3 = '123';
         const actual1 = _.filter(input1, function (num) { return num % 2 === 0; });
         const actual2 = _.filter(input2, function (num) { return num % 2 === 0; });
+        const actual3 = _.filter(input3, function (num) { return num % 2 === 0; });
         expect(actual1).to.be.eql([2]);
         expect(actual2).to.be.eql([2]);
+        expect(actual3).to.be.eql(['2']);
     });
     it('when passed an array return an array of all the values that pass the truth test (predicate)', function () {
         const input = [1, 2, 3];
