@@ -65,16 +65,14 @@ _.indexOf = function (collection, target, isSorted = undefined) {
 };
 
 _.filter = function (list, predicate, context = null) {
-    if (Array.isArray(list) || typeof list === 'object') {
-        let result = [];
-        const iteratee = function (elem) {
-            if (predicate.call(context, elem)) {
-                result.push(elem);
-            }
-        };
-        _.each(list, iteratee);
-        return result;
-    }
+    let result = [];
+    const iteratee = function (elem) {
+        if (predicate.call(context, elem)) {
+            result.push(elem);
+        }
+    };
+    _.each(list, iteratee);
+    return result;
 };
 
 _.reject = function (list, predicate, context = null) {

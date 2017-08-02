@@ -332,11 +332,15 @@ describe('_.filter', function () {
         expect(_.filter).to.be.a('function');
     });
     it('only works with arrays and objects', function () {
-        const input1 = 'string';
+        const input1 = {
+            '0': 1,
+            '1': 2,
+            '2': 3
+        };
         const input2 = [1, 2, 3];
-        const actual1 = _.filter(input1);
+        const actual1 = _.filter(input1, function (num) { return num % 2 === 0; });
         const actual2 = _.filter(input2, function (num) { return num % 2 === 0; });
-        expect(actual1).to.be.undefined;
+        expect(actual1).to.be.eql([2]);
         expect(actual2).to.be.eql([2]);
     });
     it('when passed an array return an array of all the values that pass the truth test (predicate)', function () {
