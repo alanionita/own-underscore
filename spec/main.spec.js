@@ -104,7 +104,7 @@ describe('_.first', function () {
         const actual1 = _.first(input);
         const actual2 = _.first(input, 2);
         expect(actual1).to.eql('s');
-        expect(actual2).to.eql('st');
+        expect(actual2).to.eql(['s', 't']);
     });
 
     it('returns the first element of an array', function () {
@@ -121,11 +121,31 @@ describe('_.first', function () {
         expect(actual).to.eql(expected);
     });
     it('if [n] is greater than the array length, return the whole array', function () {
-        const arg1 = ['a', 'r', 'r', 'a', 'y'];
-        const arg2 = Infinity;
-        const actual = _.first(arg1, arg2);
+        const list = ['a', 'r', 'r', 'a', 'y'];
+        const n = Infinity;
+        const actual = _.first(list, n);
         const expected = ['a', 'r', 'r', 'a', 'y'];
         expect(actual).to.eql(expected);
+    });
+    it('works with objects', function () {
+        const list = {
+            '0': '1',
+            '1': '2',
+            '2': '3',
+            '3': '4'
+        };
+        const actual = _.first(list);
+        expect(actual).to.eql('1');
+    });
+    it('works when passed n on objects', function () {
+        const list = {
+            '0': '1',
+            '1': '2',
+            '2': '3',
+            '3': '4'
+        };
+        const actual = _.first(list, 2);
+        expect(actual).to.eql(['1', '2']);
     });
 
 });

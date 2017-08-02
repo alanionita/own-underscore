@@ -11,7 +11,7 @@ _.identity = function (args) {
 };
 
 _.first = function (collection, n = undefined) {
-    return n === undefined ? collection[0] : collection.slice(0, n);
+    return n === undefined ? collection[0] : Object.entries(collection).slice(0, n).map(key => key[1]) || collection.slice(0, n);
 };
 
 _.last = function (array, n) {
