@@ -7,8 +7,6 @@ const { shuffler, returnObjectValues } = require('./helpers');
 // memoize
 // throttle
 // reduce
-// every
-// some
 // extends
 // defaults
 
@@ -210,6 +208,14 @@ _.every = function (collection, predicate, context) {
     return true;
 };
 
+_.some = function (collection, predicate, context) {
+    for (let i = 0; i < collection.length; i++) {
+      if (predicate.call(context || collection, collection[i]) === true) {
+        return true;
+      }
+    }
+    return false;
+};
 
 // look at basic advanced 6 more
 

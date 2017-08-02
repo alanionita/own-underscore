@@ -551,6 +551,50 @@ describe('_.every', function () {
     });
 });
 
+describe('_.some', function () {
+    it('should exist and be a function', () => {
+        expect(_.some).to.exist;
+        expect(_.some).to.be.a('function');
+    });
+    it('returns true if any of the values in the list pass the predicate truth test', () => {
+        const collection = [1,3,4];
+        const predicate = function (num) { 
+            return num % 2 == 0;
+        };
+        expect(_.some(collection, predicate)).to.be.true;
+    });
+    it('returns false if none of the values pass the predicate truth test', () => {
+        const collection = [1,3,5];
+        const predicate = function (num) { 
+            return num % 2 == 0;
+        };
+        expect(_.some(collection, predicate)).to.be.false;
+    });
+    it('when context param is present, bind the predicate to the context', function () {
+        const spy = sinon.spy();
+
+        // declaring the paramaters for the _every function
+
+        const collection = ['1', '3', '5'];
+        const context = {
+            '0': '2',
+            '1': '4',
+            '2': '6'
+        };
+        _.some(collection, spy, context);
+        // checking spy properties
+        const callCount = spy.callCount;
+        const firstCall = spy.firstCall.thisValue;
+        const secondCall = spy.secondCall.thisValue;
+        const thirdCall = spy.thirdCall.thisValue;
+        expect(callCount).to.be.equal(3);
+        expect(_.some(collection, spy, context)).to.be.false;
+        expect(firstCall).to.be.eql(context);
+        expect(secondCall).to.be.eql(context);
+        expect(thirdCall).to.be.eql(context);
+    });
+});
+
 describe('_.once', function () {
     it('should exist and be a function', function () {
         expect(_.once).to.be.a('function');
