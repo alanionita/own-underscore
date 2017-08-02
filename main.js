@@ -14,8 +14,9 @@ _.first = function (collection, n = undefined) {
     return n === undefined ? collection[0] : Object.entries(collection).slice(0, n).map(key => key[1]) || collection.slice(0, n);
 };
 
-_.last = function (array, n = undefined) {
-    return n !== undefined ? array.slice(-n) : array.slice(-1, array.length).toString();
+_.last = function (collection, n = undefined) {
+    if (collection instanceof Object && !Array.isArray(collection)) return undefined;
+    return n === undefined ? collection.slice(-1, collection.length).toString() : collection.slice(-n);
 };
 
 _.each = function (list, iteratee, context) {

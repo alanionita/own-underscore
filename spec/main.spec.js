@@ -179,6 +179,14 @@ describe('_.last', function () {
         const expected = ['a', 'r', 'r', 'a', 'y'];
         expect(actual).to.eql(expected);
     });
+    it('returns undefined for objects', () => {
+        const input = {
+            '0': 3, 
+            '1': 2
+        };
+        const actual = _.last(input);
+        expect(actual).to.be.undefined;
+    });
 });
 
 describe('_.each', function () {
