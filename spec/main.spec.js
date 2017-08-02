@@ -327,33 +327,32 @@ describe('_.indexOf', function () {
 });
 
 describe('_.filter', function () {
-    // Looks through each value in the list, returning an array of all the values that pass a truth test (predicate).
     it('should be a function', function () {
         expect(_.filter).to.exist;
         expect(_.filter).to.be.a('function');
     });
     it('only works with arrays and objects', function () {
         const input1 = 'string';
-        let input2 = [1, 2, 3];
-        let actual1 = _.filter(input1);
-        let actual2 = _.filter(input2, function (num) { return num % 2 === 0; });
+        const input2 = [1, 2, 3];
+        const actual1 = _.filter(input1);
+        const actual2 = _.filter(input2, function (num) { return num % 2 === 0; });
         expect(actual1).to.be.undefined;
         expect(actual2).to.be.eql([2]);
     });
     it('when passed an array return an array of all the values that pass the truth test (predicate)', function () {
-        let input = [1, 2, 3];
-        let predicate = function (num) { return num % 2 == 0; };
-        let actual = _.filter(input, predicate);
+        const input = [1, 2, 3];
+        const predicate = function (num) { return num % 2 == 0; };
+        const actual = _.filter(input, predicate);
         expect(actual).to.be.eql([2]);
     });
     it('when passed an object return an array of all the values that pass the truth test (predicate)', function () {
-        let input = {
+        const input = {
             x: 1,
             y: 2,
             z: 3
         };
-        let predicate = function (num) { return num % 2 == 0; };
-        let actual = _.filter(input, predicate);
+        const predicate = function (num) { return num % 2 == 0; };
+        const actual = _.filter(input, predicate);
         expect(actual).to.be.eql([2]);
     });
     it('when context is passed the predicate is bound to it', () => {
