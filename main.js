@@ -3,9 +3,6 @@ const _ = {};
 // Helpers 
 const { shuffler, returnObjectValues } = require('./helpers');
 
-// TASKS:
-// throttle
-
 _.identity = function (args) {
     return args;
 };
