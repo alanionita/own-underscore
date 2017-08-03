@@ -3,6 +3,7 @@ const _ = {};
 // Helpers 
 const { shuffler, returnObjectValues } = require('./helpers');
 
+// Functions
 _.identity = function (args) {
     return args;
 };
