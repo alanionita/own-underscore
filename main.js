@@ -259,15 +259,10 @@ _.difference = function (...args) {
 };
 
 _.flatten = function (arr, shallow = false) {
-    if (shallow === false) {
-        return deepFlatten(arr);
-    }
-    else if (shallow === true) {
-        return shallowFlatten(arr);
-    }
+    return shallow === false ? deepFlatten(arr) : shallowFlatten(arr);
 
     function deepFlatten(array) {
-        return array.reduce(function (acc, element) {
+        return _.reduce(array, function (acc, element) {
             return acc.concat(Array.isArray(element) ? deepFlatten(element) : element);
         }, []);
     }
