@@ -350,11 +350,11 @@ _.memoize = function (func) {
     };
 };
 
-_.throttle = function (fn, wait) {
+_.throttle = function (func, wait) {
     let canCall = true;
     return (...args) => {
         if (canCall === true) {
-            fn.apply(null, args);
+            func.apply(null, args);
             canCall = false;
             setTimeout(() => {
                 canCall = true;
