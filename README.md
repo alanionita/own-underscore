@@ -150,10 +150,6 @@ The Sinon library was used for Async functions: I mainly used the clock and spy 
 
 * **Alan Ionita** - https://github.com/alanionita
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
 ## Acknowledgments
 
 * The underscore.js team for amazing documentation 🙌
