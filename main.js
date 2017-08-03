@@ -106,30 +106,19 @@ _.map = function (list, iteratee, context) {
     return result;
 };
 
-_.contains = function (list, value, fromIndex) {
-    if (list instanceof Array) {
-        if (fromIndex) {
-            for (let i = fromIndex; i < list.length; i++) {
-                if (list[i] === value) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
+_.contains = function (list, value, fromIndex = null) {
+    return _.reduce(list, (acc, element, index) => {
+        if (fromIndex === null) {
+            element === value;
+            acc = true;
         } else {
-            if (list.indexOf(value) > 0) {
-                return true;
-            } else {
-                return false;
+            if (index >= fromIndex) {
+                element === value;
+                acc = true;
             }
         }
-    } else if (list instanceof Object) {
-        if (list[value] === undefined) {
-            return false;
-        } else {
-            return true;
-        }
-    }
+        return acc;
+    }, false);
 };
 
 _.pluck = function (collection, key) {
