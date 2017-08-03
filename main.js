@@ -83,20 +83,19 @@ _.reject = function (list, predicate, context) {
 
 _.uniq = function (array, isSorted, iteratee = null) {
     const result = [];
+    let arrayValue;
+
     if (iteratee === null) {
-        _.each(array, (item) => {
-            if (result.indexOf(item) === -1) {
-                result.push(item);
-            }
-        });
+        arrayValue = array;
     } else {
         const iterateeRes = _.filter(array, iteratee);
-        _.each(iterateeRes, (item) => {
-            if (result.indexOf(item) === -1) {
-                result.push(item);
-            }
-        });
+        arrayValue = iterateeRes;
     }
+    _.each(arrayValue, (item) => {
+        if (result.indexOf(item) === -1) {
+            result.push(item);
+        }
+    });
     return result;
 };
 
