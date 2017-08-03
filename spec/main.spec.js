@@ -331,7 +331,7 @@ describe('_.filter', function () {
         expect(_.filter).to.exist;
         expect(_.filter).to.be.a('function');
     });
-    it('only works with arrays and objects', function () {
+    it('works with arrays, strings, and objects', function () {
         const input1 = {
             '0': 1,
             '1': 2,
