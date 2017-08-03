@@ -4,18 +4,21 @@ My own rendition of [underscore.js](http://underscorejs.org), using it's functio
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
 
 ### Prerequisites
 
-Make sure you have node installed on your machine (any versions will work; v7.10.0 was used for this project)
+#### node.js
+
+node.js must be installed on your machine (any versions will work; v7.10.0 was used for this project)
 
 ```
 $ node -v // v7.10.0
 ```
 
-To install node follow this guide https://nodejs.org/en/download/package-manager/#osx
+To install node follow this guide -  https://nodejs.org/en/download/package-manager/#osx
 
+#### npm
 
 npm is also required (any versions will work; v4.2.0 was used for this project)
 
@@ -23,7 +26,7 @@ npm is also required (any versions will work; v4.2.0 was used for this project)
 $ npm -v // 4.2.0
 ```
 
-To install npm follow this guide https://docs.npmjs.com/getting-started/installing-node
+To install npm follow this guide - https://docs.npmjs.com/getting-started/installing-node
 
 ### Installing
 
@@ -31,15 +34,15 @@ Create a new folder on your machine and clone / fork + clone the repo.
 
 Open terminal and navigate to the folder storing the code
 
-Install all of the required packages
+Install all of the required packages using npm
 
 ```
 $ npm i  
 ```
-
-Go get a good summary of what is available please run the test suite below.
-
 The functions are exported as methods on the _ object. This allows us to use it in the same way as underscore: _.each().
+
+To get a good summary of what is available please run the test suite below.
+
 
 ## Running the tests
 
@@ -55,9 +58,9 @@ The tests give a good summary of all of the functions and what features they hav
 
 ### Testing patterns
 
-The tests were integral to writing the function since I used TDD to write the library. 
+The tests were integral to writing the functions since I used TDD to write the library. 
 
-They follow this pattern
+They follow this pattern:
 
 ```javascript
 it('should give an example of the test blocks', () => {
@@ -69,7 +72,7 @@ it('should give an example of the test blocks', () => {
 });
 ```
 
-The tests cover synchronous functions and async functions
+The tests cover both synchronous functions and async functions. 
 
 ```javascript
 // synchronous function 
@@ -131,8 +134,9 @@ it('calls the passed function once per waiting period', () => {
 
         expect(spy.callCount).to.eql(0);
     });
-
 ```
+
+The Sinon library was used for Async functions: I mainly used the clock and spy methods from Sinon.
 
 ## Built With
 
