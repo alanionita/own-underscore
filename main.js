@@ -88,8 +88,7 @@ _.uniq = function (array, isSorted, iteratee = null) {
     if (iteratee === null) {
         arrayValue = array;
     } else {
-        const iterateeRes = _.filter(array, iteratee);
-        arrayValue = iterateeRes;
+        arrayValue = _.filter(array, iteratee);
     }
     _.each(arrayValue, (item) => {
         if (result.indexOf(item) === -1) {
