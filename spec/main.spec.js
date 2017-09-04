@@ -581,7 +581,7 @@ describe('_.pluck', function() {
   });
 });
 
-describe('_.every', function() {
+describe.only('_.every', function() {
   it('should exist and be a function', () => {
     expect(_.every).to.exist;
     expect(_.every).to.be.a('function');
@@ -606,9 +606,7 @@ describe('_.every', function() {
   });
   it('when context param is present, bind the predicate to the context', function() {
     const spy = sinon.spy();
-
     // declaring the paramaters for the _every function
-
     const collection = ['1', '2', '4'];
     const context = {
       '0': '2',
@@ -617,18 +615,14 @@ describe('_.every', function() {
     };
     _.every(collection, spy, context);
     // checking spy properties
-    const callCount = spy.callCount;
-    const firstCall = spy.firstCall.thisValue;
-    const secondCall = spy.secondCall.thisValue;
-    const thirdCall = spy.thirdCall.thisValue;
-    expect(callCount).to.be.equal(3);
-    expect(firstCall).to.be.eql(context);
-    expect(secondCall).to.be.eql(context);
-    expect(thirdCall).to.be.eql(context);
+    expect(spy.callCount).to.be.equal(3);
+    return spy.thisValues.map(elem => {
+      expect(elem).to.eql(context);
+    });
   });
 });
 
-describe.only('_.some', function() {
+describe('_.some', function() {
   it('should exist and be a function', () => {
     expect(_.some).to.exist;
     expect(_.some).to.be.a('function');
