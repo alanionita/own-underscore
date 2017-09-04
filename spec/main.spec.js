@@ -581,10 +581,14 @@ describe('_.pluck', function() {
   });
 });
 
-describe.only('_.every', function() {
+describe('_.every', function() {
   it('should exist and be a function', () => {
     expect(_.every).to.exist;
     expect(_.every).to.be.a('function');
+  });
+  it('returns the right value if elements in the collection are all truthy or falsy', () => {
+    expect(_.every([null, 0, 'yes', false])).to.be.false;
+    expect(_.every([1, 2, 3])).to.be.true;
   });
   it('returns true if all of the values in the list pass the predicate truth test', () => {
     const collection = [2, 4, 5];

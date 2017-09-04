@@ -138,7 +138,14 @@ _.pluck = (collection, key) => {
   });
 };
 
-_.every = (collection, predicate, context = collection) => {
+_.every = (
+  collection,
+  predicate = elem => {
+    if (elem) return true;
+    else return false;
+  },
+  context = collection
+) => {
   return _.reduce(
     collection,
     (acc, elem) => {
