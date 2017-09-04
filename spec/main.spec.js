@@ -980,28 +980,20 @@ describe('_.memoize', function() {
 });
 
 describe('_.throttle', function() {
-  let spy;
-  beforeEach(function() {
-    spy = sinon.spy();
-  });
   it('should exist and be a function', () => {
     expect(_.throttle).to.exist;
     expect(_.throttle).to.be.a('function');
   });
-  xit('calls the passed function once per waiting period', () => {
+  it('calls the passed function once per waiting period', () => {
     const clock = sinon.useFakeTimers();
-    _.throttle(spy, 100);
+    let result;
+    const callBack = () => {
+      result = 'called';
+    };
+    const throttled = _.throttle(callBack, 1000);
 
-    clock.tick(1); // clock = 1
-
-    expect(spy.callCount).to.eql(0);
-
-    clock.tick(150); // clock = 151
-
-    expect(spy.callCount).to.eql(1); // 1
-
-    clock.tick(50); // clock = 201
-
-    expect(spy.callCount).to.eql(0);
+    throttled();
+    clock.tick(1500);
+    expect(result).to.eql('called');
   });
 });
