@@ -1,4 +1,4 @@
-# own-underscore
+# Underscore Clone
 
 My own rendition of [underscore.js](http://underscorejs.org), using it's functionality as a design pattern and plain ES6 javascript to enable the same methods.
 
