@@ -537,7 +537,7 @@ describe('_.contains', function() {
   it('when fromIndex is passed start searching from that index', () => {
     const value = 2;
     const list = [4, 1, 2, 3];
-    const fromIndex = 1;
+    const fromIndex = 3;
     expect(_.contains(list, value, fromIndex)).to.be.false;
   });
   it('works with objects', () => {

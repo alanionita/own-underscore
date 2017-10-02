@@ -181,14 +181,10 @@ _.defaults = (object, ...defaults) => {
 
 _.reduce = (list, iteratee, memo) => {
   let noMemo = memo === undefined;
-  _.each(list, function(item) {
-    if (noMemo === true) {
-      memo = item;
-      noMemo = false;
-    } else {
-      memo = iteratee(memo, item);
-    }
-  });
+  _.each(list, (item, i, list) => noMemo === true
+      ? ((memo = item), (noMemo = false))
+      : (memo = iteratee(memo, item, i, list))
+    );
   return memo;
 };
 
