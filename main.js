@@ -4,16 +4,12 @@ const _ = {};
 const { shuffler, returnObjectValues } = require('./helpers');
 
 // Functions
-_.identity = args => {
-  return args;
-};
+_.identity = args => args;
 
 _.first = (collection, n = null) => {
   return n === null
     ? collection[0]
-    : Object.entries(collection)
-        .slice(0, n)
-        .map(key => key[1]) || collection.slice(0, n);
+    : collection.slice(0, n);
 };
 
 _.last = (collection, n = null) => {
