@@ -234,13 +234,11 @@ _.delay = (func, wait, ...args) => {
 
 _.intersection = (...args) => {
   let result = [];
-  _.each(args[0], function(arrayElem) {
+  _.each(args[0], arrayElem => {
     let isShared = false;
     for (let i = 1; i < args.length; i++) {
-      _.each(args[i], function(check) {
-        if (arrayElem === check) {
-          isShared = true;
-        }
+      _.each(args[i], check => {
+        if (arrayElem === check) isShared = true;
       });
     }
 
@@ -254,13 +252,11 @@ _.intersection = (...args) => {
 
 _.difference = (...args) => {
   let result = [];
-  _.each(args[0], function(arrayElem) {
+  _.each(args[0], arrayElem => {
     let isUnique = true;
     for (let i = 1; i < args.length; i++) {
-      _.each(args[i], function(check) {
-        if (arrayElem === check) {
-          isUnique = false;
-        }
+      _.each(args[i], check => {
+        if (arrayElem === check) isUnique = false;
       });
     }
 
@@ -274,15 +270,11 @@ _.difference = (...args) => {
 
 _.flatten = (arr, shallow = false) => {
   return shallow === false ? deepFlatten(arr) : shallowFlatten(arr);
-
   function deepFlatten(array) {
     return _.reduce(
       array,
-      function(acc, element) {
-        return acc.concat(
-          Array.isArray(element) ? deepFlatten(element) : element
-        );
-      },
+      (acc, element) =>
+        acc.concat(Array.isArray(element) ? deepFlatten(element) : element),
       []
     );
   }
@@ -300,9 +292,9 @@ _.flatten = (arr, shallow = false) => {
 };
 
 _.sortedIndex = (list, value) => {
-  var startIndex = 0;
-  var stopIndex = list.length - 1;
-  var index = (startIndex + stopIndex) >> 1;
+  let startIndex = 0;
+  let stopIndex = list.length - 1;
+  let index = startIndex + stopIndex - 1;
 
   while (list[index] != value && startIndex < stopIndex) {
     if (value < list[index]) {
@@ -311,7 +303,7 @@ _.sortedIndex = (list, value) => {
       startIndex = index + 1;
     }
 
-    return (index = (startIndex + stopIndex) >> 1);
+    return (index = startIndex + stopIndex + 1);
   }
 };
 
