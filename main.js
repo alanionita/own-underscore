@@ -73,11 +73,10 @@ _.filter = (list, predicate, context = this) => {
   return result;
 };
 
-_.reject = (list, predicate, context) => {
-  return _.filter(list, item => {
-    return predicate.call(context || list, item) === false;
+_.reject = (list, predicate, context = this) =>
+  _.filter(list, item => {
+    return !predicate.call(context, item);
   });
-};
 
 _.uniq = (array, isSorted, iteratee = null) => {
   const result = [];
