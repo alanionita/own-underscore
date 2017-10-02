@@ -136,12 +136,12 @@ _.every = (
     if (elem) return true;
     else return false;
   },
-  context = collection
+  context = this
 ) => {
   return _.reduce(
     collection,
-    (acc, elem) => {
-      return predicate.call(context, elem) === false ? false : acc;
+    (acc, elem, i, list) => {
+      return predicate.call(context, elem, i, list) === false ? false : acc;
     },
     true
   );
