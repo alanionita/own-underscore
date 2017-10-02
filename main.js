@@ -20,14 +20,14 @@ _.last = (collection, n = null) => {
     : collection.slice(-n);
 };
 
-_.each = (list, iteratee, context) => {
+_.each = (list, iteratee, context = this) => {
   if (Array.isArray(list) || typeof list === 'string') {
     for (let i = 0; i < list.length; i++) {
-      iteratee.call(context || list, list[i], i, list);
+      iteratee.call(context, list[i], i, list);
     }
   } else if (typeof list === 'object') {
     for (let key in list) {
-      iteratee.call(context || list, list[key], key, list);
+      iteratee.call(context, list[key], key, list);
     }
   }
   return list;
