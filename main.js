@@ -134,15 +134,13 @@ _.every = (
     else return false;
   },
   context = this
-) => {
-  return _.reduce(
+) =>
+  _.reduce(
     collection,
-    (acc, elem, i, list) => {
-      return predicate.call(context, elem, i, list) === false ? false : acc;
-    },
+    (acc, elem, i, list) =>
+      predicate.call(context, elem, i, list) === false ? false : acc,
     true
   );
-};
 
 _.some = (
   collection,
