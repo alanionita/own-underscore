@@ -107,24 +107,20 @@ _.map = (list, iteratee, context = this) => {
   return result;
 };
 
-_.contains = (list, value, fromIndex = null) => {
-  return _.reduce(
+_.contains = (list, value, fromIndex = null) =>
+  _.reduce(
     list,
     (acc, element, index) => {
       if (fromIndex === null) {
-        element === value;
-        acc = true;
-      } else {
-        if (index >= fromIndex) {
-          element === value;
-          acc = true;
-        }
+        if (element === value) acc = true;
+      }
+      if (index >= fromIndex) {
+        if (element === value) acc = true;
       }
       return acc;
     },
     false
   );
-};
 
 _.pluck = (collection, key) => {
   return _.map(collection, function(element) {
