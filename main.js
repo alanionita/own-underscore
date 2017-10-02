@@ -122,13 +122,10 @@ _.contains = (list, value, fromIndex = null) =>
     false
   );
 
-_.pluck = (collection, key) => {
-  return _.map(collection, function(element) {
-    if (element.hasOwnProperty(key) === true) {
-      return element[key];
-    }
+_.pluck = (collection, key) =>
+  _.map(collection, element => {
+    if (element.hasOwnProperty(key) === true) return element[key];
   });
-};
 
 _.every = (
   collection,
