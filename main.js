@@ -80,18 +80,22 @@ _.reject = (list, predicate, context = this) =>
 
 _.uniq = (array, isSorted, iteratee = null) => {
   const result = [];
-  let arrayValue;
-
   if (iteratee === null) {
-    arrayValue = array;
+    _.each(array, item => {
+      if (result.indexOf(item) === -1) {
+        result.push(item);
+      }
+    });
   } else {
-    arrayValue = _.filter(array, iteratee);
+    _.each(array, (item, i, list) => {
+      if (iteratee(item)) {
+        if (result.indexOf(iteratee(item, i, list)) === -1) {
+          result.push((iteratee(item, i, list)));
+        }
+      }
+    });
   }
-  _.each(arrayValue, item => {
-    if (result.indexOf(item) === -1) {
-      result.push(item);
-    }
-  });
+  
   return result;
 };
 
