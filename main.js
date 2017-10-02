@@ -148,9 +148,9 @@ _.some = (
     if (elem) return true;
     else return false;
   },
-  context = collection
-) => {
-  return _.reduce(
+  context = this
+) =>
+  _.reduce(
     collection,
     (acc, elem) => {
       if (predicate.call(context, elem) === true) acc = true;
@@ -158,7 +158,6 @@ _.some = (
     },
     false
   );
-};
 
 _.extend = (destination, ...sources) => {
   _.each(sources, function(source) {
