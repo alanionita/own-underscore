@@ -6,20 +6,14 @@ const { shuffler, returnObjectValues } = require('./helpers');
 // Functions
 _.identity = args => args;
 
-_.first = (collection, n = null) => {
-  return n === null
-    ? collection[0]
-    : collection.slice(0, n);
-};
+_.first = (collection, n = null) =>
+  n === null ? collection[0] : collection.slice(0, n);
 
 _.last = (collection, n = null) => {
   if (collection instanceof Object && !Array.isArray(collection))
     return undefined;
-  return n === null
-    ? collection[collection.length - 1]
-    : collection.slice(-n);
+  return n === null ? collection[collection.length - 1] : collection.slice(-n);
 };
-
 _.each = (list, iteratee, context = this) => {
   if (Array.isArray(list) || typeof list === 'string') {
     for (let i = 0; i < list.length; i++) {
@@ -36,8 +30,11 @@ _.each = (list, iteratee, context = this) => {
 _.indexOf = (collection, target, isSorted = null) => {
   if (isSorted === null) {
     let result = -1;
+    let found = false;
     _.each(collection, (item, index) => {
-      return item === target ? (result = index) : result;
+      if (found === false) {
+        item === target ? ((result = index), (found = true)) : result;
+      }
     });
     return result;
   } else {

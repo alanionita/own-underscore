@@ -281,6 +281,12 @@ describe('_.indexOf', function() {
     const actual = _.indexOf(array, value);
     expect(actual).to.be.equal(-1);
   });
+  it('returns the index of the first value more than one targets are found in the array', function() {
+    const array = [1, 2, 2, 2, 2, 3];
+    const value = 2;
+    const actual = _.indexOf(array, value);
+    expect(actual).to.be.equal(1);
+  });
   it('if isSorted is passed then use binary search', function() {
     const array = [1, 2, 3, 4, 5, 6, 7];
     const value = 7;
