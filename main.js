@@ -90,20 +90,20 @@ _.uniq = (array, isSorted, iteratee = null) => {
     _.each(array, (item, i, list) => {
       if (iteratee(item)) {
         if (result.indexOf(iteratee(item, i, list)) === -1) {
-          result.push((iteratee(item, i, list)));
+          result.push(iteratee(item, i, list));
         }
       }
     });
   }
-  
+
   return result;
 };
 
-_.map = (list, iteratee, context) => {
+_.map = (list, iteratee, context = this) => {
   const result = [];
-  _.each(list, function(value, index) {
-    result.push(iteratee.call(context, value, index, list));
-  });
+  _.each(list, (value, index) =>
+    result.push(iteratee.call(context, value, index, list))
+  );
   return result;
 };
 
