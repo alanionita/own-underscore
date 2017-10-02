@@ -62,10 +62,10 @@ _.indexOf = (collection, target, isSorted = null) => {
   }
 };
 
-_.filter = (list, predicate, context) => {
+_.filter = (list, predicate, context = this) => {
   let result = [];
-  const iteratee = function(elem) {
-    if (predicate.call(context || list, elem)) {
+  const iteratee = function(elem, i, list) {
+    if (predicate.call(context, elem, i, list)) {
       result.push(elem);
     }
   };
