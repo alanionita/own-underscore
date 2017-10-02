@@ -16,7 +16,7 @@ _.last = (collection, n = null) => {
   if (collection instanceof Object && !Array.isArray(collection))
     return undefined;
   return n === null
-    ? collection.slice(-1, collection.length).toString()
+    ? collection[collection.length - 1]
     : collection.slice(-n);
 };
 
