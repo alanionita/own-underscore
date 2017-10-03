@@ -534,7 +534,7 @@ describe('_.contains', () => {
   });
 });
 
-describe('_.pluck', function() {
+describe('_.pluck', () => {
   it('should exist and be a function', () => {
     expect(_.pluck).to.exist;
     expect(_.pluck).to.be.a('function');
