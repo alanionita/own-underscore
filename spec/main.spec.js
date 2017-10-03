@@ -885,29 +885,24 @@ describe('_.zip', () => {
   });
 });
 
-describe('_.sortBy', function() {
+describe('_.sortBy', () => {
   it('it exists and should be a function', () => {
     expect(_.sortBy).to.exist;
     expect(_.sortBy).to.be.a('function');
   });
   it('returns a (stably) sorted copy of the list, ranked in ascending order by the results of running each value though the iteratee', () => {
     const list = [1, 2, 3, 4, 5, 6];
-    const iteratee = function(num) {
-      return Math.sin(num);
-    };
+    const iteratee = num => Math.sin(num);
     const expected = [5, 4, 6, 3, 1, 2];
     expect(_.sortBy(list, iteratee)).to.eql(expected);
   });
 });
 
-describe('_.memoize', function() {
+describe('_.memoize', () => {
   let multiply, memoMultiply;
 
-  beforeEach(function() {
-    multiply = function(a, b) {
-      return a * b;
-    };
-
+  beforeEach(() => {
+    multiply = (a, b) => a * b;
     memoMultiply = _.memoize(multiply);
   });
 
@@ -927,7 +922,7 @@ describe('_.memoize', function() {
   });
 });
 
-describe('_.throttle', function() {
+describe('_.throttle', () => {
   it('should exist and be a function', () => {
     expect(_.throttle).to.exist;
     expect(_.throttle).to.be.a('function');
@@ -935,11 +930,8 @@ describe('_.throttle', function() {
   it('calls the passed function once per waiting period', () => {
     const clock = sinon.useFakeTimers();
     let result;
-    const callBack = () => {
-      result = 'called';
-    };
+    const callBack = () => result = 'called';
     const throttled = _.throttle(callBack, 1000);
-
     throttled();
     clock.tick(1500);
     expect(result).to.eql('called');
