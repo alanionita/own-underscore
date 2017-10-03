@@ -650,7 +650,7 @@ describe('_.some', () => {
   });
 });
 
-describe('_.extend', function() {
+describe('_.extend', () => {
   it('should exist and be a function', () => {
     expect(_.extend).to.exist;
     expect(_.extend).to.be.a('function');
