@@ -304,14 +304,16 @@ _.memoize = func => {
 };
 
 _.throttle = (func, wait) => {
+  const storage = {};
   let canCall = true;
   return (...args) => {
     if (canCall === true) {
-      func.apply(null, args);
+      storage.lastResult = func.apply(null, args);
       canCall = false;
       setTimeout(() => {
         canCall = true;
       }, wait);
+      return storage.lastResult;
     }
   };
 };
