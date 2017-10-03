@@ -259,41 +259,41 @@ describe('_.each', () => {
   });
 });
 
-describe('_.indexOf', function() {
-  it('should be a function', function() {
+describe('_.indexOf', () => {
+  it('should be a function', () => {
     expect(_.indexOf).to.exist;
     expect(_.indexOf).to.be.a('function');
   });
-  it('only works with arrays passed as first param', function() {
+  it('only works with arrays passed as first param', () => {
     const input = 'string';
     const actual = _.indexOf(input, 'r');
     expect(actual).to.eql(2);
   });
-  it('returns the index of the value when found in the array', function() {
+  it('returns the index of the value when found in the array', () => {
     const array = [1, 2, 3];
     const value = 3;
     const actual = _.indexOf(array, value);
     expect(actual).to.be.equal(2);
   });
-  it('returns -1 if the index is not found in the array', function() {
+  it('returns -1 if the index is not found in the array', () => {
     const array = [1, 2, 3];
     const value = 7;
     const actual = _.indexOf(array, value);
     expect(actual).to.be.equal(-1);
   });
-  it('returns the index of the first value more than one targets are found in the array', function() {
+  it('returns the index of the first value more than one targets are found in the array', () => {
     const array = [1, 2, 2, 2, 2, 3];
     const value = 2;
     const actual = _.indexOf(array, value);
     expect(actual).to.be.equal(1);
   });
-  it('if isSorted is passed then use binary search', function() {
+  it('if isSorted is passed then use binary search', () => {
     const array = [1, 2, 3, 4, 5, 6, 7];
     const value = 7;
     const actual = _.indexOf(array, value, true);
     expect(actual).to.be.equal(6);
   });
-  it('checks that binary search is faster than regular method', function() {
+  it('checks that binary search is faster than regular method', () => {
     const array = [
       1,
       2,
