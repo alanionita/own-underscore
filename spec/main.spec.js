@@ -550,7 +550,7 @@ describe('_.pluck', () => {
   });
 });
 
-describe('_.every', function() {
+describe('_.every', () => {
   it('should exist and be a function', () => {
     expect(_.every).to.exist;
     expect(_.every).to.be.a('function');
@@ -577,7 +577,7 @@ describe('_.every', function() {
     };
     expect(_.every(collection, predicate)).to.be.true;
   });
-  it('when context param is present, bind the predicate to the context', function() {
+  it('when context param is present, bind the predicate to the context', () => {
     const spy = sinon.spy();
     // declaring the paramaters for the _every function
     const collection = ['1', '2', '4'];
