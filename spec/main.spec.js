@@ -701,11 +701,11 @@ describe('_.reduce', () => {
   });
 });
 
-describe('_.once', function() {
-  it('should exist and be a function', function() {
+describe('_.once', () => {
+  it('should exist and be a function', () => {
     expect(_.once).to.be.a('function');
   });
-  it('function should only we called once', function() {
+  it('function should only we called once', () => {
     const spy = sinon.spy();
     const testLimit = _.once(spy);
     _.once(spy);
@@ -723,7 +723,7 @@ describe('_.once', function() {
   });
 });
 
-describe('_.shuffle', function() {
+describe('_.shuffle', () => {
   it('should exist and be a function', () => {
     expect(_.shuffle).to.exist;
     expect(_.shuffle).to.be.a('function');
