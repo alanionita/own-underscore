@@ -442,7 +442,7 @@ describe('_.reject', () => {
   });
 });
 
-describe('_.uniq', function() {
+describe('_.uniq', () => {
   it('it should be a function', () => {
     expect(_.uniq).to.be.a('function');
   });
@@ -477,7 +477,7 @@ describe('_.uniq', function() {
   });
 });
 
-describe('_.map', function() {
+describe('_.map', () => {
   it('should be a function', () => {
     expect(_.map).to.be.a('function');
   });
