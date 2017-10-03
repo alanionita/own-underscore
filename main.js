@@ -231,23 +231,8 @@ _.delay = (func, wait, ...args) => {
   }, wait);
 };
 
-_.intersection = (...args) => {
-  let result = [];
-  _.each(args[0], arrayElem => {
-    let isShared = false;
-    for (let i = 1; i < args.length; i++) {
-      _.each(args[i], check => {
-        if (arrayElem === check) isShared = true;
-      });
-    }
-
-    if (isShared) {
-      result.push(arrayElem);
-    }
-  });
-
-  return result;
-};
+_.intersection = (...args) =>
+  _.reduce(args, (acc, array) => _.filter(acc, elem => array.includes(elem)));
 
 _.difference = (...args) => {
   let result = [];
