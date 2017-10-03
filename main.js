@@ -298,9 +298,7 @@ _.memoize = func => {
   const storage = {};
   return function() {
     const args = JSON.stringify(arguments);
-    if (storage[args] !== true) {
-      storage[args] = func.apply(this, arguments);
-    }
+    if (!storage[args]) storage[args] = func.apply(this, arguments);
     return storage[args];
   };
 };
