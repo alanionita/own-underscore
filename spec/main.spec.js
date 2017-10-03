@@ -822,7 +822,7 @@ describe('_.intersection', () => {
   });
 });
 
-describe('_.difference', function() {
+describe('_.difference', () => {
   it('it exists and should be a function', () => {
     expect(_.difference).to.exist;
     expect(_.difference).to.be.a('function');
@@ -843,7 +843,7 @@ describe('_.difference', function() {
   });
 });
 
-describe('_.flatten', function() {
+describe('_.flatten', () => {
   it('it exists and should be a function', () => {
     expect(_.flatten).to.exist;
     expect(_.flatten).to.be.a('function');
@@ -856,7 +856,7 @@ describe('_.flatten', function() {
   });
 });
 
-describe('_.sortedIndex', function() {
+describe('_.sortedIndex', () => {
   it('it exists and should be a function', () => {
     expect(_.sortedIndex).to.exist;
     expect(_.sortedIndex).to.be.a('function');
@@ -868,7 +868,7 @@ describe('_.sortedIndex', function() {
   });
 });
 
-describe('_.zip', function() {
+describe('_.zip', () => {
   it('it exists and should be a function', () => {
     expect(_.zip).to.exist;
     expect(_.zip).to.be.a('function');
