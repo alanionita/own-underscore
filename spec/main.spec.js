@@ -391,7 +391,7 @@ describe('_.filter', () => {
   });
 });
 
-describe('_.reject', function() {
+describe('_.reject', () => {
   it('it should be a function', () => {
     expect(_.reject).to.be.a('function');
   });
@@ -404,9 +404,7 @@ describe('_.reject', function() {
   });
   it('return an array without the elemets that pass the predicate', () => {
     const list = [1, 2, 3];
-    const predicate = function(num) {
-      return num % 2 === 0;
-    };
+    const predicate = num => num % 2 === 0;
     const actual = _.reject(list, predicate);
     const expected = [1, 3];
     expect(actual).to.eql(expected);
@@ -417,9 +415,7 @@ describe('_.reject', function() {
       '2': 2,
       '3': 3
     };
-    const predicate = function(num) {
-      return num % 2 === 0;
-    };
+    const predicate = num => num % 2 === 0;
     const actual = _.reject(list, predicate);
     const expected = [1, 3];
     expect(actual).to.eql(expected);
@@ -427,7 +423,6 @@ describe('_.reject', function() {
   it('when context is passed the predicate is bound to it', () => {
     const spy = sinon.spy();
     // declaring the paramaters for the _each function
-
     const list = [1, 2, 3];
     const context = {
       a: 4,
