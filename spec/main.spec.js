@@ -508,7 +508,7 @@ describe('_.map', () => {
   });
 });
 
-describe('_.contains', function() {
+describe('_.contains', () => {
   it('should be a function', () => {
     expect(_.contains).to.be.a('function');
   });
