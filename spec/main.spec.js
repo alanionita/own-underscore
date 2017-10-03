@@ -170,25 +170,25 @@ describe('_.last', () => {
   });
 });
 
-describe('_.each', function() {
-  it('should be a function', function() {
+describe('_.each', () => {
+  it('should be a function', () => {
     expect(_.each).to.exist;
     expect(_.each).to.be.a('function');
   });
-  it('iterates over a list of elements, yielding each in turn to an iteratee function', function() {
+  it('iterates over a list of elements, yielding each in turn to an iteratee function', () => {
     const list = ['a', 'r', 'r', 'a', 'y'];
     const spy = sinon.spy();
     _.each(list, spy);
     expect(spy.callCount).to.equal(list.length);
   });
-  it('should call the iteratee with three paramaters: element + index + list or value + key + list', function() {
+  it('should call the iteratee with three paramaters: element + index + list or value + key + list', () => {
     const list = ['a'];
     const spy = sinon.spy();
     _.each(list, spy);
     const argsPassedToIteratee = spy.args[0];
     expect(argsPassedToIteratee.length).to.equal(3);
   });
-  it('when context param is present, bind the iteratee to the context', function() {
+  it('when context param is present, bind the iteratee to the context', () => {
     const spy = sinon.spy();
 
     // declaring the paramaters for the _each function
@@ -210,8 +210,8 @@ describe('_.each', function() {
     expect(secondCall).to.be.eql(context);
     expect(thirdCall).to.be.eql(context);
   });
-  describe('behaviour for each primitive type', function() {
-    it('booleans return undefined', function() {
+  describe('behaviour for each primitive type', () => {
+    it('booleans return undefined', () => {
       const list = true;
       let counter = 0;
       function iteratee() {
@@ -220,7 +220,7 @@ describe('_.each', function() {
       _.each(list, iteratee);
       expect(counter).to.equal(0);
     });
-    it('numbers return undefined', function() {
+    it('numbers return undefined', () => {
       const list = 1267672673;
       let counter = 0;
       function iteratee() {
@@ -229,7 +229,7 @@ describe('_.each', function() {
       _.each(list, iteratee);
       expect(counter).to.equal(0);
     });
-    it('works with strings', function() {
+    it('works with strings', () => {
       const list = 'string';
       let counter = 0;
       function iteratee() {
@@ -238,7 +238,7 @@ describe('_.each', function() {
       _.each(list, iteratee);
       expect(counter).to.equal(6);
     });
-    it('null returns undefined', function() {
+    it('null returns undefined', () => {
       const list = null;
       let counter = 0;
       function iteratee() {
@@ -247,7 +247,7 @@ describe('_.each', function() {
       _.each(list, iteratee);
       expect(counter).to.equal(0);
     });
-    it('undefined returns undefined', function() {
+    it('undefined returns undefined', () => {
       const list = undefined;
       let counter = 0;
       function iteratee() {
