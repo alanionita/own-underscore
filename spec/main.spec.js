@@ -595,7 +595,7 @@ describe('_.every', () => {
   });
 });
 
-describe('_.some', function() {
+describe('_.some', () => {
   it('should exist and be a function', () => {
     expect(_.some).to.exist;
     expect(_.some).to.be.a('function');
@@ -625,7 +625,7 @@ describe('_.some', function() {
     };
     expect(_.some(collection, predicate)).to.be.false;
   });
-  it('when context param is present, bind the predicate to the context', function() {
+  it('when context param is present, bind the predicate to the context', () => {
     const spy = sinon.spy();
 
     // declaring the paramaters for the _every function
