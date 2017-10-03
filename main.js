@@ -234,23 +234,12 @@ _.delay = (func, wait, ...args) => {
 _.intersection = (...args) =>
   _.reduce(args, (acc, array) => _.filter(acc, elem => array.includes(elem)));
 
-_.difference = (...args) => {
-  let result = [];
-  _.each(args[0], arrayElem => {
-    let isUnique = true;
-    for (let i = 1; i < args.length; i++) {
-      _.each(args[i], check => {
-        if (arrayElem === check) isUnique = false;
-      });
-    }
-
-    if (isUnique) {
-      result.push(arrayElem);
-    }
-  });
-
-  return result;
-};
+_.difference = (...args) =>
+  _.reduce(args, (acc, array) =>
+    _.filter(acc, elem => {
+      if (array.includes(elem) === false) return elem;
+    })
+  );
 
 _.flatten = (arr, shallow = false) => {
   return shallow === false ? deepFlatten(arr) : shallowFlatten(arr);
