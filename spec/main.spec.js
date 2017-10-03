@@ -906,7 +906,7 @@ describe('_.sortedIndex', function() {
   });
 });
 
-describe('_.zip', function() {
+describe.only('_.zip', function() {
   it('it exists and should be a function', () => {
     expect(_.zip).to.exist;
     expect(_.zip).to.be.a('function');

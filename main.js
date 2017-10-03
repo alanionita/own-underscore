@@ -181,10 +181,13 @@ _.defaults = (object, ...defaults) => {
 
 _.reduce = (list, iteratee, memo) => {
   let noMemo = memo === undefined;
-  _.each(list, (item, i, list) => noMemo === true
-      ? ((memo = item), (noMemo = false))
-      : (memo = iteratee(memo, item, i, list))
-    );
+  _.each(
+    list,
+    (item, i, list) =>
+      noMemo === true
+        ? ((memo = item), (noMemo = false))
+        : (memo = iteratee(memo, item, i, list))
+  );
   return memo;
 };
 
@@ -303,13 +306,7 @@ _.sortedIndex = (list, value) => {
   }
 };
 
-_.zip = (...args) => {
-  return Object.keys(args[0]).map(function(key) {
-    return args.map(function(array) {
-      return array[key];
-    });
-  });
-};
+_.zip = (...args) => args[0].map((key, i) => args.map(array => array[i]));
 
 _.sortBy = (list, iteratee) => {
   if (typeof iteratee === 'function') {
