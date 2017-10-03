@@ -483,13 +483,11 @@ describe('_.map', () => {
   });
   it('produces a new array, after transforming each elem using the iteratee function', () => {
     const list = [1, 2, 3];
-    const iteratee = function(num) {
-      return num * 3;
-    };
+    const iteratee = num => num * 3;
     const expected = [3, 6, 9];
     expect(_.map(list, iteratee)).to.eql(expected);
   });
-  it('when context is passed, bind the iteratee to the context', function() {
+  it('when context is passed, bind the iteratee to the context', () => {
     const spy = sinon.spy();
     const list = [1, 2, 3];
     const context = {
