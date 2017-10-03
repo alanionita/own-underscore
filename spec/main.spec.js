@@ -333,12 +333,12 @@ describe('_.indexOf', () => {
   });
 });
 
-describe('_.filter', function() {
-  it('should be a function', function() {
+describe('_.filter', () => {
+  it('should be a function', () => {
     expect(_.filter).to.exist;
     expect(_.filter).to.be.a('function');
   });
-  it('works with arrays, strings, and objects', function() {
+  it('works with arrays, strings, and objects', () => {
     const input1 = {
       '0': 1,
       '1': 2,
@@ -346,36 +346,26 @@ describe('_.filter', function() {
     };
     const input2 = [1, 2, 3];
     const input3 = '123';
-    const actual1 = _.filter(input1, function(num) {
-      return num % 2 === 0;
-    });
-    const actual2 = _.filter(input2, function(num) {
-      return num % 2 === 0;
-    });
-    const actual3 = _.filter(input3, function(num) {
-      return num % 2 === 0;
-    });
+    const actual1 = _.filter(input1, num => num % 2 === 0);
+    const actual2 = _.filter(input2, num => num % 2 === 0);
+    const actual3 = _.filter(input3, num => num % 2 === 0);
     expect(actual1).to.be.eql([2]);
     expect(actual2).to.be.eql([2]);
     expect(actual3).to.be.eql(['2']);
   });
-  it('when passed an array return an array of all the values that pass the truth test (predicate)', function() {
+  it('when passed an array return an array of all the values that pass the truth test (predicate)', () => {
     const input = [1, 2, 3];
-    const predicate = function(num) {
-      return num % 2 == 0;
-    };
+    const predicate = num => num % 2 == 0;
     const actual = _.filter(input, predicate);
     expect(actual).to.be.eql([2]);
   });
-  it('when passed an object return an array of all the values that pass the truth test (predicate)', function() {
+  it('when passed an object return an array of all the values that pass the truth test (predicate)', () => {
     const input = {
       x: 1,
       y: 2,
       z: 3
     };
-    const predicate = function(num) {
-      return num % 2 == 0;
-    };
+    const predicate = num => num % 2 == 0;
     const actual = _.filter(input, predicate);
     expect(actual).to.be.eql([2]);
   });
