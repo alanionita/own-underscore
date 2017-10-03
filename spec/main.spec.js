@@ -749,7 +749,7 @@ describe('_.shuffle', () => {
   });
 });
 
-describe('_.invoke', function() {
+describe('_.invoke', () => {
   it('exists and should be a function', () => {
     expect(_.invoke).to.exist;
     expect(_.invoke).to.be.a('function');
@@ -769,20 +769,16 @@ describe('_.invoke', function() {
   it('when passed arguments, they should be passed to the method', () => {
     const list = [[5, 1, 7], [3, 2, 1]];
     const method = 'sort';
-    const arg = function(a, b) {
-      return b - a;
-    };
+    const arg = (a, b) => b - a;
     const expected = [[7, 5, 1], [3, 2, 1]];
     const actual = _.invoke(list, method, arg);
     expect(actual).to.deep.equal(expected);
   });
 });
 
-describe('_,delay', function() {
+describe('_,delay', () => {
   let spy;
-  beforeEach(function() {
-    spy = sinon.spy();
-  });
+  beforeEach(() => spy = sinon.spy());
 
   it('should exist and be a function', () => {
     expect(_.delay).to.exist;
@@ -791,26 +787,21 @@ describe('_,delay', function() {
   it('should run the function after wait has passed', () => {
     const clock = sinon.useFakeTimers();
     _.delay(spy, 100);
-
     clock.tick(1);
-
     expect(spy.callCount).to.eql(0);
-
     clock.tick(100);
-
     expect(spy.callCount).to.eql(1);
   });
   it('should call the function with the passed paramater', () => {
     const clock = sinon.useFakeTimers();
     _.delay(spy, 100, 'param');
-
     clock.tick(100);
     expect(spy.callCount).to.eql(1);
     expect(spy.args).to.eql([['param']]);
   });
 });
 
-describe('_.intersection', function() {
+describe('_.intersection', () => {
   it('it exists and should be a function', () => {
     expect(_.intersection).to.exist;
     expect(_.intersection).to.be.a('function');
