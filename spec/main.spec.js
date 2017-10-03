@@ -6,19 +6,19 @@ const _ = require('../main.js');
 const { returnObjectValues } = require('../helpers');
 
 // Tests
-describe('_.own-underscore', function() {
+describe('_.own-underscore', () => {
   'use strict';
-  it('is an object', function() {
+  it('is an object', () => {
     expect(_).to.be.an('object');
   });
 });
 
-describe('_.identity', function() {
-  it('should be a function', function() {
+describe('_.identity', () => {
+  it('should be a function', () => {
     expect(_.identity).to.exist;
     expect(_.identity).to.be.a('function');
   });
-  it('returns the same value passed as an argument', function() {
+  it('returns the same value passed as an argument', () => {
     const input = 'string';
     const actual = _.identity(input);
     const expected = 'string';
@@ -26,7 +26,7 @@ describe('_.identity', function() {
     expect(actual).to.equal(expected);
   });
 
-  describe('_.identity works for all primitive types', function() {
+  describe('_.identity works for all primitive types', () => {
     it('booleans', function() {
       const input = true;
       const actual = _.identity(input);
@@ -63,7 +63,7 @@ describe('_.identity', function() {
     });
   });
 
-  describe('_.identity works for all objects', function() {
+  describe('_.identity works for all objects', () => {
     it('objects', function() {
       const input = {
         o: 'o',
