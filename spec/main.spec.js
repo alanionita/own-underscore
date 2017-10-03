@@ -96,12 +96,12 @@ describe('_.identity', () => {
   });
 });
 
-describe('_.first', function() {
-  it('should be a function', function() {
+describe('_.first', () => {
+  it('should be a function', () => {
     expect(_.first).to.exist;
     expect(_.first).to.be.a('function');
   });
-  it('works with strings', function() {
+  it('works with strings', () => {
     const input = 'string';
     const actual1 = _.first(input);
     const actual2 = _.first(input, 2);
@@ -109,20 +109,20 @@ describe('_.first', function() {
     expect(actual2).to.eql('st');
   });
 
-  it('returns the first element of an array', function() {
+  it('returns the first element of an array', () => {
     const input = ['a', 'r', 'r', 'a', 'y'];
     const actual = _.first(input);
     const expected = 'a';
     expect(actual).to.equal(expected);
   });
-  it('if passed a second argument [n], returns an array of the first [n] x elements', function() {
+  it('if passed a second argument [n], returns an array of the first [n] x elements', () => {
     const arg1 = ['a', 'r', 'r', 'a', 'y'];
     const arg2 = 2;
     const actual = _.first(arg1, arg2);
     const expected = ['a', 'r'];
     expect(actual).to.eql(expected);
   });
-  it('if [n] is greater than the array length, return the whole array', function() {
+  it('if [n] is greater than the array length, return the whole array', () => {
     const list = ['a', 'r', 'r', 'a', 'y'];
     const n = Infinity;
     const actual = _.first(list, n);
