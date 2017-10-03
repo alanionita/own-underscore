@@ -130,30 +130,30 @@ describe('_.first', () => {
     expect(actual).to.eql(expected);
   });
 });
-describe('_.last', function() {
-  it('should be a function', function() {
+describe('_.last', () => {
+  it('should be a function', () => {
     expect(_.last).to.exist;
     expect(_.last).to.be.a('function');
   });
-  it('works with strings', function() {
+  it('works with strings', () => {
     const input = 'string';
     const actual = _.last(input);
     expect(actual).to.eql('g');
   });
-  it('returns the last element of an array', function() {
+  it('returns the last element of an array', () => {
     const input = ['a', 'r', 'r', 'a', 'y'];
     const actual = _.last(input);
     const expected = 'y';
     expect(actual).to.equal(expected);
   });
-  it('if passed a second argument [n], returns an array of the last [n] x elements', function() {
+  it('if passed a second argument [n], returns an array of the last [n] x elements', () => {
     const arg1 = ['a', 'r', 'r', 'a', 'y'];
     const arg2 = 2;
     const actual = _.last(arg1, arg2);
     const expected = ['a', 'y'];
     expect(actual).to.eql(expected);
   });
-  it('if [n] is greater than the array length, return the whole array', function() {
+  it('if [n] is greater than the array length, return the whole array', () => {
     const arg1 = ['a', 'r', 'r', 'a', 'y'];
     const arg2 = Infinity;
     const actual = _.last(arg1, arg2);
